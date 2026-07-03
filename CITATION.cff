@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Preprint draft, not yet submitted to arXiv. Please contact the author before citing. Once submitted, cite the arXiv version."
+title: "Mirror-Constrained Black Hole Thermodynamics: A Two-Horizon Companion"
+authors:
+  - family-names: "Van Eeckhout"
+    given-names: "Nicolas"
+    affiliation: "Win2Win SRL, Brussels, Belgium"
+type: software
+repository-code: "https://github.com/vaneeckhoutnicolas/mirror-bh-thermodynamics"
+license: MIT
+keywords:
+  - black hole thermodynamics
+  - Ruppeiner geometry
+  - entropy product
+  - inner horizon
+  - virtual horizons
+  - general relativity
