@@ -1,0 +1,699 @@
+# Mirror-Constrained Black Hole Thermodynamics
+
+### A Two-Horizon Companion to the Constraint-Free First Law
+
+**Author.** N. Van Eeckhout (independent; Win2Win SRL, Brussels)
+**Status.** Working draft / research note. Intended as a companion to Ahn, Bae, Jang and Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235 (Int. J. Mod. Phys. D, 2026).
+**Note on method.** Section 11 contains an adversarial review by a panel of expert personas. The panel is an analytic device used to stress-test the proposal, not a set of real endorsements. Every load-bearing physics result outside the new framing is attributed to its original authors in Section 14.
+
+-----
+
+## Abstract
+
+The constraint-free formulation of the first law derived directly from the field equations removes the volume work term $P,dV$ in favour of an entropy variation $dS$, and in doing so it derives the first law from the outer horizon alone, valid even in higher-derivative gravity. We argue that this local, single-sheet success has a global counterpart that lives on the inner horizon and that the two are dual halves of a single closed structure. The two horizons of a charged or rotating black hole are the two sheets of a $2{:}1$ cover of the parameter space, branched over the extremal locus. The exchange of the sheets is the deck transformation of that cover, a discrete mirror map. The mass of the hole is the symmetric *sum* of the two sheets and is sheet-asymmetric in the relevant sense; the conserved Ansorg-Hennig invariant is the symmetric *product* of the two sheets and is mass-independent. Running the constraint-free first law forward on the outer sheet, mapping it to the inner sheet by the mirror, and demanding that the loop close reproduces exactly the known equivalence between mass-independence of the entropy product and the balance condition $T_+ S_+ = T_- S_-$. The discarded work content is not lost: it reappears, not as a pressure, but as a single global algebraic constraint. We carry the construction through Reissner-Nordstrom in closed form, test it in the genuine three-parameter $(M,J,Q)$ state space of Kerr-Newman, and find that the mirror survives there as one conserved scalar invariant rather than as a naive symmetric doubling. We delimit the domain of validity: the clean invariant is a feature of the asymptotically flat, $\Lambda = 0$ sector, and it degrades precisely in the direction where a cosmological pressure, and hence an enthalpy, would be introduced. As a concrete new result, we show that the mirror acts exactly on the thermodynamic (Ruppeiner) geometry. For Kerr each horizon curvature is elementary, $R_\pm = 1/(4\pi M^2) \mp 1/(2\pi\sqrt{M^4 - J^2})$, splitting into a mirror-even part that is the mass alone and a mirror-odd part that carries the entire extremal singularity and nothing else; for Reissner-Nordstrom both sheets are flat. We then resolve the full three-parameter case: deck conjugacy persists, the mirror-even curvature $R_+ + R_-$ is a rational function obtained in closed form and verified against independent numerics, and its poles are fixed by the determinant identity $\det g^{(+)} \det g^{(-)} = -64\pi^6 M^4 D/P^5$, which places the curvature singularities exactly on the union of the extremal branch locus and the locus where a horizon’s thermodynamic metric degenerates. Finally, the dimensionless curvatures of the two horizons combine into pure integers: for Kerr $R_+ S_+ + R_- S_- = -1$ and $R_+ S_- + R_- S_+ = 3$, independent of mass and spin, vanishing for the flat Reissner-Nordstrom case, and broken by charge through a coefficient we give in closed form, $R_+ S_+ + R_- S_- = -1 + 3(M^4 - 2J^2),Q^2/(M^2 J^2) + O(Q^4)$. The diagonal value $-1$ is robust to the dimension of the parameter manifold, holding on the three-parameter Kerr-Newman state space at $Q = 0$ as well as on the two-parameter Kerr space, while the cross value moves from $3$ to $9$; the charged invariants are obtained in closed form and verified numerically to forty-eight digits.
+
+-----
+
+## 1. Introduction
+
+Black hole thermodynamics began as an analogy between the laws of horizon mechanics and the laws of thermodynamics, and it has since become one of the few quantitative windows onto quantum gravity. A recurring technical obstacle is the derivation of the first law for black holes that carry both an outer event horizon and an inner Cauchy horizon, such as the Reissner-Nordstrom (RN) and Kerr-Newman families. Padmanabhan showed that for static, spherically symmetric horizons the radial field equation evaluated on the horizon can be read as a thermodynamic identity,
+$$
+T,dS - dE = P,dV ,
+$$
+with $T = \kappa/2\pi$, $S = A/4$, and $P = T^{r}{}_{r}$ the radial matter pressure at the horizon. For multi-horizon black holes the standard practice was to restrict variations to the outer horizon by imposing an extra constraint and to build the work term by multiplying the horizon field equation by the volume variation $dV$.
+
+Ahn, Bae, Jang and Kwon remove that crutch. They multiply the horizon field equation by the entropy variation $dS$ under unconstrained variations of the black hole parameters, which lets both horizons move, retains validity in higher-derivative gravity, and avoids the breakdown of $r_\pm$-based schemes for black holes with three independent parameters $(M,J,Q)$. Working directly in the $(M,J,Q)$ state space, they show that the field equation at the outer horizon is itself the first law for general variations, with no added constraint.
+
+This is a clean result, and it raises an immediate question. If the outer horizon alone suffices to produce the first law, what has become of the inner horizon? The inner horizon does not disappear when the parameters vary; the abstract of the constraint-free paper is explicit that a general variation shifts both horizons. The information about the inner horizon must therefore be encoded somewhere in the structure of the $(M,J,Q)$ description. The thesis of this note is that it is encoded as a global constraint with a precise geometric origin, that this constraint is the natural complement of the local constraint-free first law, and that the two together form a closed loop. The organizing object is a discrete mirror symmetry exchanging the two horizons.
+
+The proposal grows out of a simple intuition. The work term carries two kinds of content at once: a *quantity*, the energy budget, and a *quality*, the way that budget is distributed and constrained. The constraint-free derivation keeps the quantity through the outer-horizon first law and discards the explicit volume bookkeeping. We claim that the quality is precisely the part that lives on the mirror, and that it is most naturally expressed not as a pressure but as a constraint.
+
+-----
+
+## 2. The constraint-free first law, stated precisely
+
+We take the constraint-free first law as given input. For a stationary black hole with parameters $(M,J,Q)$ and outer horizon at $r_+$, the on-shell field equation evaluated at $r_+$, multiplied by the unconstrained entropy variation $dS_+$, is equivalent to
+$$
+\delta M = T_+ ,\delta S_+ + \Omega_+ ,\delta J + \Phi_+ ,\delta Q ,
+\tag{2.1}
+$$
+with $T_+ = \kappa_+/2\pi$, $S_+ = A_+/4$, and $\Omega_+, \Phi_+$ the angular velocity and electric potential at $r_+$. No restriction to a sub-surface and no auxiliary constraint are imposed, and (2.1) survives the replacement of the Einstein term by a higher-derivative Lagrangian provided $S_+$ is taken to be the Wald entropy.
+
+Two features of (2.1) matter for what follows. First, it is a statement on a single sheet, the outer horizon. Second, it is local in the state space: it relates differentials at a point. The construction below adds a second sheet and a global, finite (not differential) relation.
+
+-----
+
+## 3. The horizon double cover and the mirror involution
+
+### 3.1 Two horizons as two sheets
+
+For RN the metric function is
+$$
+f(r) = 1 - \frac{2M}{r} + \frac{Q^2}{r^2}, \qquad
+r_\pm = M \pm \sqrt{M^2 - Q^2}.
+\tag{3.1}
+$$
+The two horizons are the two branches of the square root. Regarded as functions over the parameter plane $(M,Q)$, they are the two sheets of a $2{:}1$ cover, and the map that exchanges them,
+$$
+\sigma : \quad \sqrt{;\cdot;} \mapsto -\sqrt{;\cdot;}, \qquad r_+ \leftrightarrow r_- ,
+\tag{3.2}
+$$
+is the deck transformation of that cover. It is an involution, $\sigma^2 = \mathrm{id}$. Its fixed-point set is the locus where the square root vanishes, the discriminant
+$$
+\Delta_{\mathrm{ext}} : \quad M^2 - Q^2 = 0 ,
+\tag{3.3}
+$$
+which is the extremal surface. On $\Delta_{\mathrm{ext}}$ the two sheets merge, $r_+ = r_-$, and the temperature vanishes. This is the geometric meaning of the original “asymmetry between two dimensions”: the horizon structure is not one plane but a branched double cover, and the branch locus is the extremal surface where the cover degenerates.
+
+For Kerr-Newman the same structure holds with
+$$
+r_\pm = M \pm \sqrt{M^2 - Q^2 - a^2}, \qquad a = J/M ,
+\tag{3.4}
+$$
+and branch locus $M^2 = Q^2 + a^2$.
+
+The two-branch state space itself has prior art: Aman, Bengtsson and Pidokrajt extended the Gibbs surface of Kerr across the extremal edge to include the inner-horizon entropy, finding the combined Weinhold surface isometric to a null cone. The branched-cover language, the deck involution as organizing principle, and the invariants built on it below are the present note's additions to that arena.
+
+### 3.2 Sum versus product, quantity versus quality
+
+By the elementary symmetric functions of the two roots (Vieta), for RN
+$$
+r_+ + r_- = 2M, \qquad r_+ r_- = Q^2 .
+\tag{3.5}
+$$
+The two symmetric functions play opposite roles under the mirror. The *sum* is proportional to the mass: it carries the energy budget, the quantity, and it depends on $M$. The *product* depends only on the charge: it is mass-independent. Passing to entropies $S_\pm = \pi r_\pm^2$,
+$$
+S_+ + S_- = \pi\big(4M^2 - 2Q^2\big), \qquad
+S_+ , S_- = \pi^2 Q^4 .
+\tag{3.6}
+$$
+The mass-independence of $S_+ S_- = \pi^2 Q^4$ is, at this level, nothing more than Vieta’s formula for the constant term of the horizon polynomial. The quantity lives in the sum, the quality lives in the product. This is the precise version of the heuristic that motivated the note.
+
+### 3.3 The mirror is broken, and the breaking is physical
+
+The involution $\sigma$ is not a symmetry of the dynamics. The surface gravities have opposite signs,
+$$
+T_+ = \frac{r_+ - r_-}{4\pi r_+^2} > 0, \qquad
+T_- = \frac{r_- - r_+}{4\pi r_-^2} < 0 ,
+\tag{3.7}
+$$
+so the inner sheet carries a formally negative temperature, and the inner horizon is a Cauchy horizon, dynamically unstable to mass inflation. The mirror is therefore anomalous: the two sheets are exchanged as algebraic branches but are not physically equivalent. The asymmetry that the original intuition reached for is real and is carried by the sign in (3.7). A perfectly symmetric doubling would be wrong; the correct statement is a broken mirror whose breaking is the difference between the outer and inner horizon. The negative inner temperature goes back to Curir and to Okamoto and Kaburaki, and the involution itself appears at the level of the fundamental relation in Cvetic, Gibbons, Lu and Pope, who derive $T_+S_+ + T_-S_- = 0$ (signed temperatures) in generality from the inversion symmetry $S \to K(Q,J)/S$ of the Christodoulou-Ruffini relation whenever a product formula holds. What is lifted here is the geometric reading: the involution as the deck transformation of the cover, and, in Sections 7 and 10, the curvature invariants it protects. It is worth recording that the same authors judged the Ricci scalar of the thermodynamic metrics to have no evident physical significance; Section 7.11 is the direct counterpoint, exhibiting the diagonal contraction of that scalar as the detector of product universality.
+
+-----
+
+## 4. Two first laws and the closing loop
+
+### 4.1 The inner first law from the mirror
+
+Applying $\sigma$ to the constraint-free first law (2.1) maps the outer-horizon relation to its inner-horizon image,
+$$
+\delta M = T_- ,\delta S_- + \Omega_- ,\delta J + \Phi_- ,\delta Q .
+\tag{4.1}
+$$
+That the inner horizon enjoys its own first law of this form is an established result (Castro-Rodriguez). Here it is not an independent postulate but the mirror image of the constraint-free first law: one derivation on the outer sheet, transported to the inner sheet by the deck transformation.
+
+### 4.2 Closure
+
+The mass $M$ is a single-valued function on the base of the cover. Running the first law forward on the outer sheet, crossing to the inner sheet by $\sigma$, and returning must reproduce the same $M$. Demanding that this loop close is a non-trivial compatibility condition between (2.1) and (4.1). Carrying it out, the closure condition is the balance
+$$
+T_+ S_+ = T_- S_-
+\tag{4.2}
+$$
+in the convention where the inner temperature is taken with the sign that makes the inner first law read as (4.1). Chen, Liu and Zhang proved that (4.2) is equivalent to the mass-independence of the entropy product,
+$$
+\frac{\partial}{\partial M}\big(S_+ S_-\big) = 0 .
+\tag{4.3}
+$$
+The loop therefore closes if and only if the product invariant is conserved. For RN this is transparent: from (3.6) and (3.7),
+$$
+T_+ S_+ = \frac{r_+ - r_-}{4}, \qquad T_- S_- = -,\frac{r_+ - r_-}{4} ,
+\tag{4.4}
+$$
+equal in magnitude, which is (4.2) up to the sign convention, and $S_+ S_- = \pi^2 Q^4$ is manifestly $M$-independent, which is (4.3). The two are the same statement seen from two sides.
+
+### 4.3 The loop, in words
+
+The structure is a closed cycle:
+$$
+\underbrace{\text{field equation at } r_+}*{\text{constraint-free first law}}
+;\xrightarrow{\ \times, dS*+\ };
+\underbrace{\delta M = T_+\delta S_+ + \cdots}*{\text{outer first law}}
+;\xrightarrow{\ \sigma\ };
+\underbrace{\delta M = T*-\delta S_- + \cdots}*{\text{inner first law}}
+;\xrightarrow{\ \text{closure}\ };
+\underbrace{S*+ S_- = \text{const}(J,Q)}_{\text{global constraint}} .
+$$
+The constraint-free formulation supplies the first arrow on one sheet. The mirror supplies the transport. Closure supplies the global invariant. The local single-sheet result and the global two-sheet constraint are the two halves of one loop, which is the sense in which this note is complementary to the constraint-free paper rather than competing with it.
+
+-----
+
+## 5. The three-dimensional test (Kerr-Newman)
+
+The original request was to cut the idea down to the genuine three-parameter case and see whether the mirror still holds. This is also the case in which the authors of the constraint-free paper report that $r_\pm$-based schemes break down. Both warnings point at the same place, and the resolution is instructive.
+
+The horizon areas are $A_\pm = 4\pi (r_\pm^2 + a^2)$. Using (3.4) and Vieta on $r^2 - 2Mr + (a^2 + Q^2) = 0$, namely $r_+ + r_- = 2M$ and $r_+ r_- = a^2 + Q^2$, a short computation gives
+$$
+A_+ A_- = 16\pi^2 \big(r_+^2 + a^2\big)\big(r_-^2 + a^2\big)
+= 16\pi^2\big(Q^4 + 4 a^2 M^2\big)
+= 16\pi^2\big(Q^4 + 4 J^2\big) ,
+\tag{5.1}
+$$
+where the cross terms in $M$ recombine through $J = aM$ into the manifestly mass-independent form. This is the Ansorg-Hennig relation
+$$
+A_+ A_- = (8\pi J)^2 + (4\pi Q^2)^2 ,
+\qquad
+S_+ S_- = \pi^2\big(Q^4 + 4 J^2\big) ,
+\tag{5.2}
+$$
+which reduces to the RN result $\pi^2 Q^4$ at $J = 0$.
+
+The verdict is sharp. The naive symmetric doubling fails in three dimensions: neither the radius product $r_+ r_- = a^2 + Q^2$ nor the entropy sum is mass-independent once $a = J/M$ is resolved. What survives is one specific symmetric combination, the entropy product expressed in the conserved charges, and it survives exactly. The mirror holds in three dimensions, but as a single conserved scalar constraint, not as two symmetric planes. The breakdown the constraint-free authors flag is the breakdown of the naive picture; the invariant that replaces it is (5.2).
+
+-----
+
+## 6. Constraints, not pressure
+
+The complementary content of this note can be stated in one line: the work term that the constraint-free derivation multiplies by and then trades away does not vanish from the full two-sheet description; it is repackaged as the global constraint (5.2).
+
+This is why the framing is constraints rather than pressure. There is a well-developed alternative in which a black hole is given a genuine pressure by promoting the cosmological constant, $P = -\Lambda/8\pi$, so that the mass becomes an enthalpy $M = H = U + PV$ and the first law acquires a $V,dP$ term (Kastor-Ray-Traschen; the black hole chemistry programme of Kubiznak-Mann). That route adds a new conjugate pair and a new dimension to the state space. The route here adds nothing to the state space. It keeps $(M,J,Q)$, keeps $\Lambda = 0$, and accounts for the second horizon by a single finite constraint rather than by a new intensive variable.
+
+The two routes are not merely different in taste; they are in tension, and the tension is itself a result. Chen, Liu and Zhang showed that the mass-independence of the product, equivalently the closure (4.2), breaks down for Kerr-AdS black holes in $d \ge 4$ and for Myers-Perry black holes in $d \ge 6$. The qualitative structure of the two-horizon (part) product in (A)dS backgrounds, mass-dependent while the complete-root relations survive, was mapped by Xu, Wang and Meng; the perturbative coefficients and the same-pressure identity of Section 7.11 are quantitative layers added here. In four dimensions the clean invariant is a property of the asymptotically flat, $\Lambda = 0$ sector. The moment one turns on the cosmological pressure, the very direction in which an enthalpy would be introduced, the mirror constraint degrades. The decision to express the second horizon as a constraint rather than as a pressure is therefore not a stylistic preference but a choice of the sector in which the structure is exact. The global constraint is the $\Lambda = 0$ organizing principle; the enthalpy is the $\Lambda \ne 0$ organizing principle; they are not both available in clean form at once.
+
+This degradation can be made quantitative at the level of the thermodynamic geometry of Section 7. The diagonal dimensionless curvature invariant of the two Kerr horizons, $R_+S_+ + R_-S_- = -1$ (Section 7.8), is an exact integer at $\Lambda = 0$. Turning on a cosmological constant breaks it by a computable amount. Building the Kerr-AdS horizon entropies to first order in $\varepsilon = 1/\ell^2 = -\Lambda/3$ from the Gibbons-Perry-Pope thermodynamics ($E = m/\Xi^2$, $J = ma/\Xi^2$, $S = \pi(r^2+a^2)/\Xi$, $\Xi = 1 - a^2/\ell^2$) and recomputing the invariant gives
+$$
+R_+S_+ + R_-S_- = -1 + \frac{4J^2(J^2 - 6M^4)}{M^6},\varepsilon + O(\varepsilon^2),
+\tag{6.1}
+$$
+verified against high-precision evaluation to forty digits. The coefficient is instructive set against the charge coefficient (7.17). Charge breaks the integer with a coefficient that diverges as $J \to 0$ and changes sign at $a/M = 1/\sqrt2$; the cosmological constant breaks it with a coefficient that vanishes as $J \to 0$ and keeps a fixed sign throughout the sub-extremal region, since $J^2 - 6M^4 < 0$ whenever $J \le M^2$. Anti-de Sitter ($\varepsilon > 0$, $\Lambda < 0$) therefore pushes the invariant uniformly below $-1$, an effect largest near extremality and dying away at zero spin, where the charge deformation instead diverges. The two deformations off the flat vacuum integer are qualitatively opposite at the static limit: charge is singular there, the cosmological constant is smooth. This is the quantitative face of the claim that the global constraint and the enthalpy are alternative, not simultaneous, principles, the integer belonging to the $\Lambda = 0$ sector and the enthalpy direction being precisely the one that moves it. One caveat fixes the scope: (6.1) keeps $M$ as the energy at fixed $\Lambda$, the leading response of the flat-space invariant to a cosmological background; the fully extended construction, in which $\Lambda$ is varied and $M$ becomes the enthalpy with a conjugate thermodynamic volume, would enlarge the state space and is left open.
+
+That enlargement, however, is degenerate at the point where the integer lives, and this can be shown directly. Promoting the pressure to a coordinate adds the volume conjugate to it; deriving the Kerr-AdS thermodynamic volume from the same data, $V = \partial M / \partial P|_{S,J}$, and verified against the Schwarzschild-AdS value $\tfrac{4}{3}\pi r^3$, gives in the flat limit
+$$
+V ;\xrightarrow{;\ell \to \infty;}; \frac{2\pi(r^2+a^2)(a^2+2r^2)}{3r},
+\tag{6.2}
+$$
+a function of $(M,J)$ alone, since $r^2 + a^2 = 2Mr$ and $a = J/M$ there. The would-be third coordinate carries no information independent of $(M,J)$ at zero pressure: the Jacobian $\partial(M,J,V)/\partial(r,a,\ell)$ vanishes as $2\pi(r^2+a^2)^4/(r^2\ell^3)$ as $\ell \to \infty$. The extended three-dimensional state space pinches onto the two-dimensional $(M,J)$ surface in the flat limit. The integer is therefore a property of that boundary slice and does not continue smoothly into the interior: charge and the cosmological constant deform it within the flat $(M,J)$ geometry, by (7.17) and (6.1), whereas the enthalpic direction leaves that geometry altogether. Whether the genuinely three-dimensional extended curvature carries any clean invariant of its own, at fixed nonzero pressure where the coordinates are non-degenerate, is a separate and open question.
+
+-----
+
+## 7. An original result: the mirror acts on the thermodynamic geometry
+
+This section reports a calculation carried out specifically to test the panel’s strongest objection (Reviewer B, Section 11): does the mirror have geometric content beyond the algebraic level, and does the branch locus coincide with a curvature singularity of the thermodynamic geometry? In the rotating case the answer is yes and is exact. Every identity below was obtained and cross-checked both symbolically and numerically.
+
+### 7.1 Setup
+
+We use Ruppeiner geometry in the mass representation. With conserved coordinates $x^a$, the thermodynamic metric on a given horizon is the negative Hessian of its entropy,
+$$
+g^{(\pm)}*{ab} = -,\frac{\partial^2 S*\pm}{\partial x^a , \partial x^b},
+\tag{7.1}
+$$
+and $R_\pm$ is its scalar curvature. The two sheets share the same coordinates $x^a$; the deck involution $\sigma$ acts as $W \to -W$, where for Kerr $W = \sqrt{M^4 - J^2}$ is the radical whose zero is the extremal branch locus.
+
+### 7.2 Reissner-Nordstrom: flat on both sheets
+
+For RN with $x^a = (M,Q)$ a direct computation gives
+$$
+R_+ = R_- = 0 .
+\tag{7.2}
+$$
+Both horizon geometries are flat. The mirror acts on a trivial geometry and there is no curvature singularity. The geometric content of the mirror is therefore not sourced by charge. The structural origin of the flatness is the classification of Aman, Bengtsson and Pidokrajt: an entropy of the form $S = M^{c_1} f(M^{c_2} X)$ has flat Ruppeiner geometry when $c_2 = -1$, which Reissner-Nordstrom satisfies.
+
+### 7.3 Kerr: the mirror sum rule and the branch-locus singularity
+
+For Kerr with $x^a = (M,J)$ and $S_\pm = 2\pi\big(M^2 \pm \sqrt{M^4 - J^2},\big)$, three exact results hold.
+
+**(i) Deck conjugacy.** The inner-horizon curvature is the image of the outer-horizon curvature under the involution,
+$$
+R_-(M,J) = R_+(M,J)\big|_{W \to -W}, \qquad W = \sqrt{M^4 - J^2},
+\tag{7.3}
+$$
+the residual vanishing identically. The mirror is an exact involutive (anti)symmetry of the thermodynamic geometry, not only of the parameter algebra.
+
+**(ii) Closed form of each sheet.** Both horizon curvatures are elementary and split into a mirror-even and a mirror-odd term,
+$$
+\boxed{;R_\pm = \frac{1}{4\pi M^2} ;\mp; \frac{1}{2\pi\sqrt{M^4 - J^2}};}
+\tag{7.4}
+$$
+verified symbolically with vanishing residual against (7.3). The first term is the mirror-even part: it depends on the mass alone and is finite everywhere, including on the extremal locus. The second term is the mirror-odd part: it carries the entire $J$-dependence through the radical and diverges only where the radical vanishes. Two corollaries follow immediately. The mirror-symmetric part is a pure function of the mass,
+$$
+R_+ + R_- = \frac{1}{2\pi M^2}, ,
+\tag{7.5}
+$$
+finite everywhere and independent of the angular momentum, while the mirror-antisymmetric part is a pure function of the extremality radical,
+$$
+R_+ - R_- = -,\frac{1}{\pi\sqrt{M^4 - J^2}}, .
+\tag{7.6}
+$$
+The two invariants are cleanly separated: the sum knows only the mass, the difference knows only the distance to extremality.
+
+**(iii) Branch-locus singularity, carried by the odd sector.** As $J \to M^2$ the even part stays finite at $1/(4\pi M^2)$ while the odd part diverges, so
+$$
+R_\pm ;\longrightarrow; \mp\infty ,
+$$
+equal in magnitude and opposite in sign. The divergence cancels in the sum (7.5) and survives entirely in the difference (7.6). The curvature singularity sits exactly on the branch locus where the two sheets merge, and it lives wholly in the sector that the mirror flips. Away from extremality the odd part has no other zero or pole, so the singular set of the Kerr two-horizon geometry is exactly the branch locus.
+
+### 7.4 Reading
+
+The thermodynamic curvature splits into a mirror-even piece and a mirror-odd piece, and the two carry cleanly separated content. The even piece, $1/(2\pi M^2)$, is smooth and depends only on the mass: it is the geometric face of the quantity, mirroring the role of the entropy *sum* in Section 3. The odd piece carries the entire singularity, concentrated on the extremal branch locus: it is the geometric face of the asymmetry between the two horizons, and it vanishes in the flat RN case where the cover does not branch in a curved way. This confirms the panel’s conjecture in the rotating sector and upgrades the mirror from an algebraic involution on roots to an exact involution on the thermodynamic geometry.
+
+### 7.5 Kerr-Newman: the three-parameter case, resolved
+
+We now carry the computation to the full $(M,J,Q)$ family. In the clean radical-free form the two entropies are
+$$
+S_\pm = \pi\big(2M^2 - Q^2 \pm 2W\big), \qquad W = \sqrt{M^4 - M^2Q^2 - J^2},
+\tag{7.7}
+$$
+so that $S_+ + S_- = 2\pi(2M^2 - Q^2)$ and $S_+ S_- = \pi^2(Q^4 + 4J^2)$, the second reproducing the Ansorg-Hennig invariant as the constant term of the quadratic whose two roots are the entropies. The radical $W$ generalises the Kerr one; its zero $P \equiv M^4 - M^2Q^2 - J^2 = 0$ is the extremal branch locus.
+
+Two exact statements hold. First, deck conjugacy persists in three dimensions,
+$$
+R_-(M,J,Q) = R_+(M,J,Q)\big|*{W \to -W},
+\tag{7.8}
+$$
+verified by computing both curvatures in the quadratic extension $\mathbb{Q}(M,J,Q)[W]/(W^2 - P)$, where every curvature scalar takes the form $p + qW$ and the involution is the nontrivial field automorphism. The mirror remains an exact involution of the thermodynamic geometry. Second, because $R*\pm = p \pm qW$, the mirror-even curvature is radical-free,
+$$
+R_+ + R_- = 2p, ,
+\tag{7.9}
+$$
+a rational function of $(M,J,Q)$ alone. We obtained it in closed form: a single rational function with numerator of degree $24$ and denominator $2\pi M^2 D^2$, where
+$$
+D = 4J^4M^4 - 8J^4M^2Q^2 + 4J^4Q^4 + 12J^2M^6Q^2 - 15J^2M^4Q^4 + 4J^2M^2Q^6 - M^6Q^6 + M^4Q^8 .
+\tag{7.10}
+$$
+The full expression is recorded in the ancillary file; it is exact, not a fit, and it agrees with an independent exact-assembly evaluation of $R_+ + R_-$ at several interior points to sixteen digits. This closes the three-parameter case left open in the previous version.
+
+### 7.6 The determinant identity and the singular locus
+
+The denominator is not arbitrary. A direct computation of the two horizon metric determinants gives the compact identity
+$$
+\boxed{;\det g^{(+)} \cdot \det g^{(-)} = -,\frac{64\pi^6 M^4, D}{P^5};}
+\tag{7.11}
+$$
+with the same $D$ as in (7.10) and $P = M^4 - M^2Q^2 - J^2$. The product of the two sheets’ thermodynamic metric determinants is therefore a single explicit rational function, and it vanishes exactly on $D = 0$. So $D = 0$ is the locus where one of the two horizon metrics degenerates: a thermodynamic-stability boundary, not a coordinate artifact.
+
+This pins the pole structure cleanly even though the curvature itself is unwieldy. The mirror-even curvature (7.9) has denominator $2\pi M^2 D^2$, and the mirror-odd combination evaluates to
+$$
+\big(R_+ - R_-\big)^2 = 4q^2 P = \frac{(\text{degree-}24)}{4\pi^2, P, D^4}, ,
+\tag{7.12}
+$$
+a simple pole in $P$ at extremality together with poles on $D$. Collecting both, the singular set of the Kerr-Newman two-horizon geometry is
+$$
+{M = 0} ;\cup; {P = 0} ;\cup; {D = 0}:
+$$
+the trivial mass axis, the extremal branch locus where the sheets merge, and the degeneracy locus where a sheet’s metric collapses. As in Kerr, the extremal divergence lives in the odd sector (7.12); the new three-dimensional feature is the degeneracy locus $D = 0$, fixed by the determinant identity (7.11), which the even sector feels as well.
+
+### 7.7 Reading, and honest limits
+
+For Kerr the result is clean and complete: each sheet is $1/(4\pi M^2) \mp 1/(2\pi\sqrt{M^4 - J^2})$, the even sector is the mass, the odd sector is the extremal singularity, and nothing else occurs. For Kerr-Newman the qualitative picture survives — exact deck conjugacy, a radical-free mirror-even curvature, the extremal divergence in the odd sector — but the curvature is no longer elementary, and the honest statement is that its clean content is structural: the involution (7.8), the determinant identity (7.11), and the pole set ${M=0}\cup{P=0}\cup{D=0}$. Two limits should not be over-read. The two-dimensional Kerr sum rule (7.5) and the three-dimensional Kerr-Newman sum (7.9) are curvatures of manifolds of different dimension, so the latter does not reduce to the former at $Q \to 0$; both are correct, and they are distinct objects, though, as Section 7.8 shows, one particular dimensionless combination of them nonetheless takes the same integer value on both. And all curvature signs follow one fixed convention; the convention-independent content is the split into a mass-controlled even sector and a singularity-controlling odd sector.
+
+### 7.8 Integers from the mirror: the dimensionless invariants
+
+The curvatures above carry dimensions; the scale-free object is the dimensionless curvature $\bar R = R,S$, the standard measure in Ruppeiner geometry. Evaluated on the two Kerr sheets and added, it collapses to a pure number. With $R_\pm$ from (7.4) and $S_\pm = 2\pi(M^2 \pm \sqrt{M^4 - J^2},)$,
+$$
+\boxed{; R_+ S_+ + R_- S_- = -1 ;}
+\tag{7.13}
+$$
+identically, independent of both the mass and the angular momentum. The individual products $R_\pm S_\pm$ are lengthy rational functions of $(M,J)$; the integer emerges only in the inner-plus-outer combination, as an exact cancellation between the two sheets. The cross combination is an integer as well,
+$$
+R_+ S_- + R_- S_+ = 3 ,
+\tag{7.14}
+$$
+so the entire dimensionless content of the two-horizon geometry is two integers. Equivalently, the mirror-even and mirror-odd pairings are themselves integers,
+$$
+(R_+ + R_-)(S_+ + S_-) = 2, \qquad (R_+ - R_-)(S_+ - S_-) = -4 ,
+\tag{7.15}
+$$
+the first twice the entropy-weighted even curvature, the second the entropy-weighted odd curvature. That the odd pairing is the finite number $-4$ rather than a divergence is itself the point: the $1/\sqrt{M^4 - J^2}$ pole of $R_+ - R_-$ (7.6) is cancelled exactly by the matching zero of $S_+ - S_- = 4\pi\sqrt{M^4 - J^2}$. Under the opposite metric-sign convention all four numbers change sign together; their integrality and their ratios are convention-independent. For Reissner-Nordstrom each of these vanishes, since $R_\pm = 0$: the integers are a feature of rotation, and the charged-static case carries none of them.
+
+A statement this sharp invites two questions: whether it survives the addition of charge, and whether it is an accident of working on a two-dimensional manifold. Both were settled by carrying the full curvature computation to the three-parameter family. Working in the quadratic extension $\mathbb{Q}(M,J,Q)[W]/(W^2 - P)$, where each scalar curvature is $R_\pm = p \pm qW$ with $p, q$ rational and $W = \sqrt{P}$, the two dimensionless combinations follow in closed form,
+$$
+R_+ S_+ + R_- S_- = 2\pi p,(2M^2 - Q^2) + 4\pi q,P, \qquad R_+ S_- + R_- S_+ = 2\pi p,(2M^2 - Q^2) - 4\pi q,P ,
+\tag{7.16}
+$$
+both rational in $(M,J,Q)$ over the common denominator $2\pi M^2 D^2$, with the same $D$ as in the determinant identity (7.11). They were checked against an independent high-precision evaluation of the curvature at five interior points to forty-eight digits.
+
+Two facts emerge. First, the diagonal invariant is robust to the dimension of the manifold. Its uncharged value is the same integer $-1$ on the three-dimensional Kerr-Newman manifold at $Q = 0$ as on the two-dimensional Kerr manifold, even though at $Q = 0$ the charge direction does not simply decouple: the cross invariant does change with dimension, from $3$ in two dimensions to $9$ in three. The extra contributions from the charge direction cancel in the diagonal combination and survive in the cross. The diagonal sum, not the cross, is the invariant that does not see the embedding.
+
+|family                |manifold     |$R_+ S_+ + R_- S_-$  |$R_+ S_- + R_- S_+$|
+|----------------------|-------------|---------------------|-------------------|
+|Reissner-Nordstrom    |$(M,Q)$, flat|$0$                  |$0$                |
+|Kerr                  |$(M,J)$      |$-1$                 |$3$                |
+|Kerr-Newman, $Q \to 0$|$(M,J,Q)$    |$-1$                 |$9$                |
+|Kerr-Newman           |$(M,J,Q)$    |$-1 + c,Q^2 + \cdots$|rational           |
+
+Second, charge breaks the diagonal integer by a computable amount,
+$$
+R_+ S_+ + R_- S_- = -1 + c(M,J),Q^2 + O(Q^4), \qquad \boxed{;c(M,J) = \frac{3,(M^4 - 2J^2)}{M^2 J^2};} ,
+\tag{7.17}
+$$
+the coefficient extracted from (7.16) and confirmed against high-precision evaluation to twenty-eight digits. Two features stand out. The coefficient diverges as $J \to 0$: the rotation-only integer $-1$ and the charge-only flat value $0$ are joined by a non-uniform double limit, and the order in which $Q$ and $J$ are sent to zero is not interchangeable. And $c$ changes sign on $J = M^2/\sqrt{2}$, equivalently where the Kerr radical equals the spin, $\sqrt{M^4 - J^2} = J$: below this spin the charge raises the dimensionless curvature sum above $-1$, above it the charge lowers it. The Kerr integer is thus the rotation-sector skeleton of the diagonal two-horizon invariant, robust to dimension and deformed only when a second scale is switched on: by charge through (7.17), and by a cosmological constant through (6.1), the two deformations being qualitatively opposite at the static limit, as discussed in Section 6.
+
+### 7.9 The spin-angle parametrization and the complex continuation
+
+The Kerr results take their clearest form in a single angular variable. Writing the dimensionless spin as a sine,
+$$
+\sin\theta = \frac{a}{M} = \frac{J}{M^2}, \qquad \theta \in \left[0, \tfrac{\pi}{2}\right],
+\tag{7.18}
+$$
+the extremal radical becomes $W = \sqrt{M^4 - J^2} = M^2\cos\theta$, vanishing at the extremal angle $\theta = \pi/2$. The two horizon entropies collapse to a half-angle pair,
+$$
+S_+ = 4\pi M^2 \cos^2\tfrac{\theta}{2}, \qquad S_- = 4\pi M^2 \sin^2\tfrac{\theta}{2},
+\tag{7.19}
+$$
+with sum $4\pi M^2$ and product $4\pi^2 M^4\sin^2\theta = 4\pi^2 J^2$, the Ansorg-Hennig invariant. The curvatures reduce to a secant,
+$$
+R_\pm = \frac{1}{4\pi M^2}\big(1 \mp 2\sec\theta\big),
+\tag{7.20}
+$$
+the mass in the even part, the extremal divergence in the odd $\sec\theta$. The deck involution is the reflection $\theta \mapsto \pi - \theta$ about the extremal angle: it exchanges the entropies (7.19) and flips the sign of the secant in (7.20).
+
+In this variable the integers are immediate. Per sheet,
+$$
+R_+ S_+ = -\tfrac12 + \tfrac12\cos\theta - \sec\theta, \qquad R_- S_- = -\tfrac12 - \tfrac12\cos\theta + \sec\theta,
+\tag{7.21}
+$$
+so the diagonal sum is twice the constant term, $R_+S_+ + R_-S_- = -1$, the $\theta$-dependent parts being odd under the deck reflection and cancelling; the cross sum is $3$ by the same mechanism. The integer is the deck-even constant of the dimensionless curvature, nothing more.
+
+The parametrization also fixes the meaning of the branch locus. For $J > M^2$ the spin exceeds unity and $\theta = \pi/2 + i\psi$ becomes complex; the two entropies continue to a genuine complex-conjugate pair,
+$$
+S_\pm = 2\pi M^2\big(1 \mp i\sinh\psi\big),
+\tag{7.22}
+$$
+the two real horizons of the sub-extremal hole merging at $\theta = \pi/2$ and continuing as conjugates beyond it, exactly as the two roots of a quadratic go complex past their discriminant zero. The diagonal invariant $R_+S_+ + R_-S_- = -1$ remains real and equal to $-1$ on the super-extremal sheet, since it is a deck-symmetric function of the conjugate pair. This is the structural reason the integer is robust: it is the value of a single-valued analytic function on the cover, constant and real across the branch point that separates the real two-horizon region from the complex naked-singularity region. The real and the complex regimes are two faces of one surface. Finally, the charge-breaking coefficient (7.17) reads $c = 3\cos 2\theta / (M^2\sin^2\theta)$, changing sign at $\theta = \pi/4$, the midpoint between Schwarzschild and extremality, and diverging as $\theta \to 0$.
+
+### 7.10 Novelty
+
+The scalar curvature of the outer Kerr horizon and its divergence at extremality are known (Aman and Pidokrajt), and the thermodynamic geometry of inner horizons has been studied (Pradhan). The new content here is: the closed form of each Kerr sheet with its even/odd split (7.4) and the two separated invariants (7.5)-(7.6); the exact deck-conjugacy relation in both two and three parameters (7.3, 7.8); the radical-free Kerr-Newman mirror-even curvature in closed form (7.9)-(7.10); the determinant identity (7.11) with the resulting pole set, locating the extremal singularity in the mirror-odd sector against the flat Reissner-Nordstrom geometry (7.2); and the dimensionless invariants of Section 7.8: the two Kerr integers (7.13)-(7.15); the closed-form Kerr-Newman diagonal and cross combinations (7.16) verified to forty-eight digits; the robustness of the diagonal integer $-1$ across the two- and three-dimensional manifolds against the change of the cross from $3$ to $9$; and the closed-form coefficient (7.17) by which charge breaks the diagonal integer, with its $J \to 0$ divergence and its sign change at $J = M^2/\sqrt{2}$; and the spin-angle parametrization of Section 7.9, in which the entropies are a half-angle pair, the integers are the deck-even constant of the dimensionless curvature, and the branch locus is the point where the real two-horizon pair continues to a complex-conjugate pair, exhibiting the robustness of the integer as the reality of a single-valued analytic invariant across the branch point. These are the geometric counterparts of the algebraic mirror of Sections 3 to 5 and are the concrete new results of this note. The identification of the diagonal integer with product universality, Section 7.11, is the conceptual core among them. Two disclosures from the novelty review sharpen the claims. First, the diagonal integer is implicitly derivable in three lines from published expressions: the unified curvature and entropy of Aman, Bengtsson and Pidokrajt (their Eqs. (35) and (37)) reproduce both branch products exactly, and the $-1$ follows; the ingredients were on the page since 2015, while the combination, its constancy, its integer character and its equivalence to product universality were not stated there or anywhere found. Second, the targeted novelty search against the thermodynamic-geometry and entropy-relations corpora has now been performed and is documented, query by query, in a companion novelty log, with full attribution of the neighboring literature and two forty-digit cross-validations of our closed forms against published ones.
+
+### 7.11 The integer is the geometric shadow of product universality
+
+The robustness of the diagonal integer across dimensions invites a sharper question: what must the entropy satisfy for the integer to appear at all? The answer ties the curvature back to the organizing distinction of Section 3. Consider the two-parameter family of degree-two homogeneous, deck-symmetric entropies
+$$
+S_\pm = A,M^2 \pm B,\sqrt{M^4 - J^2},
+\tag{7.23}
+$$
+of which Kerr is the single case $A = B = 2\pi$. Homogeneity alone does not fix the invariant: computed for general $A, B$, the diagonal combination $R_+S_+ + R_-S_-$ is a function of $(M,J)$, not a constant, and no linear combination of the diagonal and cross invariants is constant away from a special locus. The value collapses to the integer $-1$ if and only if $A = B$. That condition has a direct thermodynamic meaning. The entropy product of (7.23) is
+$$
+S_+ S_- = (A^2 - B^2),M^4 + B^2 J^2,
+\tag{7.24}
+$$
+mass-independent precisely when $A = B$, where it reduces to $S_+ S_- = A^2 J^2$, the Ansorg-Hennig form. The diagonal integer is therefore the differential-geometric shadow of the universal, mass-independent entropy product. The curvature of the two-sheet Hessian geometry is an integer exactly in the regime where the product is a pure quality in the sense of Section 3. Homogeneity fixes the structure of (7.23); the balance $A = B$, equivalently product universality, fixes the integer value.
+
+This identification settles the fate of the integer under the cosmological deformation, and with it the status of the extended construction of Section 6. Chen, Liu and Zhang showed that the mass-independence of the entropy product fails for Kerr-AdS. The failure appears at the same order as the curvature breaking. Expanding the product for the Kerr-AdS horizons gives
+$$
+S_+ S_- = 4\pi^2 J^2\left(1 - 8,\varepsilon M^2\right) + O(\varepsilon^2), \qquad \varepsilon = -\Lambda/3,
+\tag{7.25}
+$$
+whose first-order term is mass-dependent, while the diagonal integer breaks at the same order by the coefficient (6.1). Product universality and the diagonal integer break together, at first order in $\varepsilon$, driven by the same deformation. This is why the naive enthalpic geometry carries no clean invariant of its own: the pressure that destroys the universal product is identically the pressure that destroys the integer. The clean two-horizon curvature and the Ansorg-Hennig product are not two results but one, and black hole chemistry is precisely the regime in which that one structure dissolves. The charge deformation (7.17) is of a different character, since the Kerr-Newman product $S_+S_- = \pi^2(Q^4 + 4J^2)$ remains mass-independent while the three-dimensional integer still moves; there the integer breaks through the curvature couplings to the charge direction rather than through any failure of the product, which is the geometric counterpart of the divergent-versus-vanishing static-limit contrast of Section 7.8.
+
+The dissociation is itself the lesson. In two dimensions the two statements, mass-independence of the product and constancy of the curvature, are one and the same; in three they come apart, the product remaining mass-independent while the curvature acquires its mass-dependence through the charge direction. Product universality is therefore the robust member of the pair, surviving the added dimension and the charge, and failing only with the cosmological constant; the constant curvature is the more constrained statement, the two-dimensional coincidence of an invariant that, in its own right, persists in the full state space only as the product. The clean integer is the shadow that this egalitarian invariant casts on the two-dimensional slice, and one should not expect it to be the whole of the object; nothing privileges two dimensions except that the shadow happens to be an integer there.
+
+The microscopic reading of the product completes the picture and places the integer within the Kerr/CFT correspondence. For black holes with a smooth extremal limit the two entropies can be written as
+$$
+S_\pm = 2\pi\left(\sqrt{N_L} \pm \sqrt{N_R}\right),
+\tag{7.26}
+$$
+where $N_L$ and $N_R$ are interpreted as the levels of the left- and right-moving sectors of a dual two-dimensional conformal field theory (Larsen; Cvetic and collaborators). For Kerr this is $N_L = M^4$, $N_R = M^4 - J^2$; for Kerr-Newman, $N_L = M^4 - M^2Q^2 + Q^4/4$ and $N_R = M^4 - M^2Q^2 - J^2$. The product $S_+S_- = 4\pi^2(N_L - N_R)$ then returns $4\pi^2 J^2$ and $\pi^2(4J^2 + Q^4)$, the Ansorg-Hennig values, with $N_L - N_R$ fixed by the charges and independent of the mass. Chen, Liu and Zhang showed that the same condition, written as $T_+S_+ = T_-S_-$, forces the two central charges to coincide; the surface-gravity computation returns $T_+S_+ = T_-S_- = (r_+ - r_-)/4$ for Reissner-Nordstrom, Kerr and Kerr-Newman alike, the equality being exactly the mass-independence. The diagonal curvature integer is therefore one member of a single family: mass-independence of the product, equality of the horizon $TS$ products, coincidence of the left and right central charges, and quantization of the level difference $N_L - N_R$ are one condition seen four ways, and the integer is its expression in the Hessian geometry. What the condition is not is a statement about the causal interior. The conservation at work is the microscopic level-matching of the dual theory, fixed by the quantized charges; it is not a flux across the Cauchy horizon, and the two-sheet structure of the thermodynamic state space, though it shares the inner horizon with the causal double structure of the maximal extension, is a distinct object that carries no claim about the spacetime beyond it.
+
+-----
+
+## 8. A single principle: mirror sorting and the even-sector invariants
+
+The results of Sections 3 through 7 are not independent findings. They are facets of one organizing principle, which can be stated as a sorting of thermodynamic content under the deck involution and used as a reference point for the whole subject.
+
+**The principle.** The thermodynamic data of a multi-horizon black hole is a function on the branched double cover of parameter space by the horizon radii, and it splits under the deck involution, the mirror, into two sectors. The odd sector carries the mass and behaves as an energy: the quantity, built from the sum of horizon data. The even sector is fixed by the conserved charges alone and is independent of the mass: the quality, built from the product. The universal, quantized, and integer invariants of the theory are precisely the even-sector invariants, and they stand or fall together.
+
+**The central equivalence.** For the asymptotically flat Kerr-Newman family the following are equivalent:
+(i) the entropy product $S_+S_-$ is independent of the mass;
+(ii) the even and odd homogeneous parts of the entropy carry equal coefficients;
+(iii) $T_+S_+ = T_-S_-$;
+(iv) the left and right central charges of the Kerr/CFT description coincide, $c_L = c_R$;
+(v) the level difference $N_L - N_R$ is fixed by the charges;
+(vi) the diagonal two-horizon Ruppeiner curvature $R_+S_+ + R_-S_-$ is a mass-independent integer.
+
+Conditions (i), (iii), (iv), (v) are the thermodynamic and microscopic faces, due to Ansorg and Hennig, to Chen, Liu and Zhang, and to Larsen and Cvetic. Conditions (ii) and (vi) are the geometric faces developed here, cleanest in the two-dimensional $(M,J)$ reduction. That (vi), a statement about the curvature of a fluctuation metric, belongs on this list is the central claim of the paper: the integer is the differential-geometric shadow of entropy-product universality.
+
+**Verification across theories and dimensions.** The equivalence of (vi) with product universality is not confined to Kerr-Newman. It has been checked directly, by computing the diagonal invariant $R_+S_+ + R_-S_-$, on a range of families. The invariant equals $-1$ for Kerr, for Kerr-Newman at zero charge, for the five-dimensional Myers-Perry black hole whose product $\propto J_aJ_b$ is universal, and, most tellingly, for the Kerr-Sen black hole of heterotic string theory at every value of the charge, because the Kerr-Sen entropy product $S_+S_- = 4\pi^2 J^2$ is charge-independent (the product itself is due to Pradhan, in the Einstein frame; the curvature invariant on it is new). In exactly the cases where the product loses universality, the invariant departs from $-1$: it is broken by charge for Kerr-Newman, whose product $\pi^2(4J^2+Q^4)$ carries the charge, and it is non-constant for the six-dimensional Myers-Perry black hole, whose product is mass-dependent for $d \geq 6$. The Kerr-Sen and Kerr-Newman comparison is the sharpest single test: the same charge parameter, opposite outcomes, decided entirely by whether the product depends on the charge. The equivalence therefore holds across two distinct theories and three spacetime dimensions, in both the direction where the integer survives and the direction where it breaks. The outer-branch Ruppeiner geometry of Myers-Perry is prior art (Aman and Pidokrajt; Bravetti, Nettel and Quevedo), and our outer-branch product matches the Bravetti closed form to forty digits after unit mapping, just as the Kerr branch products match the unified curvature of Aman, Bengtsson and Pidokrajt exactly; the two-branch invariants are the new layer. Section 10.6 subsequently generalizes the verification into a theorem: the invariant equals $-1$ for every deck-symmetric family $S_\pm = 2\pi(W(M) \pm \sqrt{W^2 - J^2})$ with arbitrary $W$, which contains Kerr, Kerr-Sen and equal-spin five-dimensional Myers-Perry as special cases and supplies the exact branch split for each.
+
+**The algebraic root.** All six conditions rest on one algebraic fact. The elementary symmetric functions of the horizon radii are the conserved charges, not the mass: the product $r_+r_- = a^2 + Q^2$ carries no mass, while the sum $r_+ + r_- = 2M$ is the mass. Quality is the product because the product is the charge-sector symmetric function; quantity is the sum because the sum is the mass. Everything else is this fact dressed in successive layers of structure: the entropy as a degree-two homogeneous potential yields the curvature integer; the algebraic curve $W^2 = M^4 - J^2$ yields the arithmetic; the Hessian determinant yields the logarithmic corrections. Degree-two homogeneity is necessary for the integer but not sufficient: the additional and physically meaningful ingredient is the balance of the even and odd parts, condition (ii), equivalently product universality.
+
+**The breaking, sorted.** Deformations break the even-sector invariants in two distinct ways, and the principle predicts which. A deformation that unbalances the even and odd parts within the $(M,J)$ plane destroys product universality and the integer together, at the same order in the deformation; this is the cosmological constant, and its effect vanishes in the static limit. A deformation that adds a dimension breaks the curvature integer through the couplings to the new direction while leaving the product universal; this is the electric charge, and its effect diverges in the static limit. The two are qualitatively opposite, and the principle assigns each deformation to its class by whether it acts within the plane or transverse to it. This is the predictive content: given a new deformation, the sorting says in advance whether the clean invariants survive and how they fail.
+
+**Scope, stated honestly.** The equivalence and the sorting are solid. The layers beneath are of decreasing certainty. The algebraic and thermodynamic content is exact. The arithmetic structure, that the state space is the complex-multiplication elliptic curve $j = 1728$ with the mirror realised as reflection through the half-period and the Ruppeiner distance to extremality equal to the lemniscate period $M,\Gamma(1/4)^2/2$, is exact as structure but of unproven physical consequence, and the curvature integers are demonstrably not invariants of that curve, living at a different order in the charge. The connection of the integer to the one-loop logarithmic-correction coefficient is a structural correspondence, charge breaking both the constancy of the integer and the topological character of the correction, and not a numerical identity. Used as a baseline, the principle organises what is known and predicts the qualitative fate of deformations. It does not yet derive the specific values $-1$ and $3$ from first principles, which remains the central open problem, and the natural place to attack it is the one-loop determinant that the fluctuation metric and the logarithmic correction share.
+
+In summary, as a sequence of claims:
+
+1. The two horizons are the two sheets of a branched double cover of the $(M,J,Q)$ parameter space, exchanged by the deck transformation $\sigma$, with branch locus the extremal surface.
+1. The mass is the symmetric sum (quantity, mass-laden); the Ansorg-Hennig invariant is the symmetric product (quality, mass-independent).
+1. The mirror is broken by the sign of the inner temperature, and the breaking is the physical asymmetry between event and Cauchy horizon.
+1. The constraint-free first law on the outer sheet, transported by $\sigma$ to the inner sheet, closes into a loop whose closure condition is $T_+S_+ = T_-S_-$, equivalent to mass-independence of the entropy product.
+1. In the genuine three-parameter case the mirror survives as a single conserved scalar invariant, not as a symmetric doubling.
+1. The discarded work term reappears as that global constraint, not as a pressure, and this is exact in the $\Lambda = 0$ sector and degrades when a cosmological pressure is introduced.
+
+-----
+
+## 9. Context, the cosmological beta, and the anatomy of breaking
+
+### 9.1 Prior art and positioning
+
+The algebraic backbone of this section belongs to an established corpus. The mass-independence of the all-horizon entropy product was proven family by family by Cvetic, Gibbons, and Pope, and the all-horizon entropy sum, with virtual horizons explicitly included, was shown by Wang, Xu, and Meng and by Du and Tian to depend only on the cosmological constant and matter couplings. Xu, Wang, and Meng further derived first-law and Smarr structure on the virtual horizons themselves. Visser exhibited the Schwarzschild-de Sitter counterexample for the product. Most importantly, Zhang and Gao reduced the whole question to two criteria that follow from the per-horizon first law, $\partial S_i/\partial M = 1/T_i$: the entropy product over a set of horizons is mass-independent if and only if $\sum_i 1/(T_i S_i) = 0$ over that set, and the sum if and only if $\sum_i 1/T_i = 0$, together with a Vandermonde lemma and a sharp Laurent-exponent criterion on f(r) that decides both without solving for the roots.
+
+This section adds no new identity to that corpus. What it adds is a change of question. The literature asks which relations are mass-independent over which sets of roots. We ask what the gap between the physical subset and the complete root set does to an observer who only sees the physical subset, and we show that the gap behaves exactly like an omitted variable in a regression: what looks like broken universality, or like noise, is deterministic context that has been left out of the accounting.
+
+*In plain language: previous work established which combinations of horizons give clean, mass-free numbers, provided you count the ghost horizons too. Our question is different: what does the world look like if you refuse to count the ghosts? The answer is that it looks noisy and broken, and that all of the noise is fake.*
+
+### 9.2 The decomposition: local invariant equals universal over context
+
+Reissner-Nordstrom-de Sitter has the horizon quartic
+
+$$r^4 - \ell^2 r^2 + 2M\ell^2 r - Q^2\ell^2 = 0, \tag{9.1}$$
+
+with three physical roots $r_-$, $r_+$, $r_c$ and one negative virtual root $r_o$. Vieta gives the complete-set product as the constant term, so the complete-set entropy product is mass-free, consistent with the corpus above:
+
+$$S_{\text{all}} \equiv \pi^4 (r_- r_+ r_c\, r_o)^2 = \pi^4 Q^4 \ell^4. \tag{9.2}$$
+
+The physical-subset product is then forced into the form
+
+$$S_{\text{phys}} \equiv \pi^3 (r_- r_+ r_c)^2 = \frac{\pi^3 Q^4 \ell^4}{\Sigma^2}, \qquad \Sigma \equiv r_- + r_+ + r_c = -r_o, \tag{9.3}$$
+
+where the second equality in the definition of $\Sigma$ is Vieta again (the quartic has no cubic term). Equation 9.3 is the organizing statement of the section: the local invariant equals the universal invariant divided by a context factor, and the context factor $\Sigma$, the sum of the physical radii, is identically the virtual root. All the mass dependence of the physical product is carried by $\Sigma$. Verified exactly: at $Q = 1$, $\ell = 10$, $S_{\text{all}}/\pi^4 = 10000$ for every $M$, while $S_{\text{phys}}/\pi^3$ runs through $80.55, 79.51, 78.51, 77.55, 76.61$ as $M$ runs from $1.3$ to $1.7$, with the identity $Q^4\ell^4/\Sigma^2 = (r_-r_+r_c)^2$ holding to machine precision.
+
+*In plain language: the clean number is always there. When you only count the horizons you can see, you are looking at the clean number divided by the size of the box, and the box grows with the mass. The mess is the box, not the law.*
+
+### 9.3 The beta and the regression
+
+Because 9.3 is a power law, the language of factor regression applies literally. Write $\log S_{\text{phys}} = 4\log Q + 4\log\ell - 2\log\Sigma + \text{const}$: the exponents are betas, and $\Sigma$ is the context factor whose omission biases everything else. Across a cloud of 400 black holes with independently drawn $(M, Q, \ell)$, regressing $\log S_{\text{phys}}$ on the full context $(\log Q, \log\ell, \log\Sigma)$ recovers the betas $(4, 4, -2)$ exactly, with $R^2 = 1$ to machine precision. Regressing on $\log\Sigma$ alone yields $R^2 = 0.12$. The residual scatter of the naive regression is not statistical noise: it is the signature of omitted variables, and it vanishes identically when the accounting is completed. The same lesson holds for the breakings established earlier in the paper: the Kerr-AdS breaking of the diagonal invariant is an exact analytic function of the pressure parameter $\varepsilon$ (a degree-five polynomial fit reaches $R^2 = 1.0000000000$), and the scattered Myers-Perry $d = 6$ values collapse onto a single deterministic surface $F(J_a/M^2, J_b/M^2)$ once scaling is quotiented out. Nothing in this landscape is random.
+
+*In plain language: in finance, if a stock looks wildly volatile, the first suspicion is not that the world is random but that your model is missing a factor. Here we can prove it: add the missing factor, the ghost horizon, and the volatility drops to exactly zero. Not approximately. Exactly.*
+
+### 9.4 Completability and its boundary
+
+The Vieta carrier identity, physical product times virtual product equals a mass-free constant, was checked explicitly for $d = 4$ through $7$ in the charged de Sitter family. The $d = 5$ case is special in a way that must be distinguished from the known dimension statements of the corpus (which concern the mass-independence of complete-set sums for $d > 4$): in $d = 5$ the reduced polynomial in $x = r^2$ has degree equal to the number of physical horizons, so the physical product is already mass-free by itself, with no virtual completion needed. We call this self-completion, and $d = 5$ is the only dimension in the range examined where it occurs.
+
+Rotation marks the boundary of the mechanism. For Kerr-de Sitter, the entropy factor is $r_i^2 + a^2$, and the complete-set product evaluates by Vieta to
+
+$$\prod_{i=1}^{4} (r_i^2 + a^2) = P(ia)\,P(-ia) \;\propto\; M^2, \tag{9.4}$$
+
+mass-dependent even over all four roots. Charge is context-completable; rotation is not. The frame-dragging factor leaves an irreducible beta that no accounting of virtual horizons removes. This is the same charge-rotation asymmetry that reappears, with its exact mechanism, in the branch-split anomaly of Section 10.6: there the quantity $\Sigma_W = W'W'''/W''^2 + W'^2/(WW'')$ detects the scale anomaly that background charge induces and rotation never does, and here rotation is the sector whose context cannot be completed at all. The two statements are faces of one asymmetry and their common origin is open.
+
+### 9.5 The junction with the wave equation
+
+The completion statement of this section has a wave-equation face, developed in Section 10.9: the monodromy exponent of a mode $(\omega, m)$ at horizon $i$ is the first-law entropy shift per absorbed quantum, so the total exponent over the complete root set is the $(\omega\,\partial_M + m\,\partial_J)$ derivative of the entropy sum, and its vanishing is exactly the sum universality of Wang, Xu, and Meng, by the criterion of Zhang and Gao. The two literatures state the same closure without citing each other; the virtual horizons are the agents of it in both. The identities are theirs; the junction, and the identification of the virtual roots as the unfolded irregular singularity carrying quantized curvature charges, are the contribution of this paper.
+
+*In plain language: the bookkeeping that makes the entropy numbers clean and the bookkeeping that makes waves scatter consistently around the black hole turn out to be the same bookkeeping, kept by the same ghosts. Two communities discovered it separately, in different words, and never noticed.*
+
+### 9.6 Two layers, opposite responses to context
+
+The algebraic quality, the entropy product, is context-completable in the charge sector: its breaking is an artifact of local accounting, repaired by the cosmological and virtual horizons. The geometric quality, the curvature integer of Section 7, responds differently: the four-sheet trace is not conserved at finite pressure (Section 10.1 records the refutation), so no inclusion of further horizons restores the integer as a sum. What the completion does instead, and this supersedes the earlier expectation that nothing geometric survives on the extra sheets, is carry rigid quantized curvature charges of its own, developed in Section 10. The product lives on the boundary of the box; the integer lives in its interior; and the ghost sheets, far from being inert bookkeeping, turn out to be the most rigid geometric objects in the whole structure.
+
+*In plain terms: there are two kinds of conserved beauty here. One is a bookkeeping fact about all the horizons together, and it survives being placed in a universe as long as you count the whole ledger. The other is a shape, and the universe genuinely deforms it on the visible horizons. The surprise of the next section is that the invisible horizons hold shapes of their own, and those do not deform at all.*
+
+-----
+
+## 10. Virtual sheets and quantized curvature charges
+
+The two-sheeted cover of Section 3 is the flat-space picture. This section turns on the cosmological constant, which promotes the horizon condition to a quartic and embeds the physical pair in a four-sheeted branched cover whose two extra sheets are complex. The finding is that Ruppeiner geometry extends to those complex sheets, and that they carry exact rational curvature charges, more rigid than anything on the physical sheets. Their identity is then established: they are the AdS unfolding of the flat-space irregular singularity of the radial wave equation.
+
+### 10.1 The complete cover and a failed conjecture
+
+For Reissner-Nordstrom-AdS at fixed AdS radius $\ell$,
+$$ \frac{r^4}{\ell^2} + r^2 - 2Mr + Q^2 = 0, \tag{10.1}$$
+with two physical roots $r_\pm$ and a complex conjugate pair, the virtual sheets. Section 9 established that Vieta symmetric functions are context-complete on the full root set, and Section 7.11 tied the diagonal invariant to product mass-independence. Assembling the two suggests a natural conjecture: the diagonal invariant, broken at finite pressure on the physical pair, should be restored as a Galois trace over the complete cover,
+$$ \sum_{i=1}^{4} R_i S_i \stackrel{?}{=} \text{const}, \tag{10.2}$$
+where each branch entropy $S_i(M,Q) = \pi r_i^2$ defines its own Ruppeiner geometry (metric $g = -\mathrm{Hess}\,S$, calibrated so that Kerr yields exactly $-1$) and the conjugate pair contributes a real sum.
+
+This conjecture is false. The four-root sum is real but not constant: $-3.211$ at $(M,Q,\ell) = (1, 0.5, 10)$, $-2.279$ at $(1, 0.5, 5)$, $-0.729$ at $(2, 0.7, 8)$. Galois invariance guarantees only a rational function of the coefficients, not a constant. We record the refutation and turn to what the decomposition revealed instead.
+
+*In plain terms: we hoped that adding up the invariant over all four sheets, real and virtual, would give back a conserved number. It does not. But splitting the sum into its physical and virtual halves uncovered something better.*
+
+### 10.2 The virtual charges
+
+Decompose the trace into the physical and virtual pairs and take $\ell \to \infty$. The physical pair returns to its flat value ($0$ for the $(M,Q)$ family, $-1$ for the $(M,J)$ family, validating the pipeline). The virtual pair converges to an exact rational number depending on nothing except which two-plane of thermodynamic fluctuations defines the geometry. For electric fluctuations, coordinates $(M,Q)$, including on a Kerr-Newman-AdS background with arbitrary fixed rotation,
+$$ \lim_{\ell\to\infty}\bigl(R_v S_v + R_{\bar v} S_{\bar v}\bigr)\Big|_{(M,Q)} = -\frac{27}{8}, \tag{10.3}$$
+independent of the background values of $M$, $Q$ and $J$. For angular fluctuations, coordinates $(M,J)$, at fixed background charge,
+$$ \lim_{\ell\to\infty}\bigl(R_v S_v + R_{\bar v} S_{\bar v}\bigr)\Big|_{(M,J)} = -\frac{25}{8} + \frac{5}{16}q^2 + \frac{1}{16}q^4 = \frac{(q^2+10)(q^2-5)}{16}, \qquad q \equiv \frac{Q}{M}, \tag{10.4}$$
+independent of $J$ and of scale, deformed only by the background charge. Both are exact symbolic theorems (10.6 below); they were first found numerically, with Richardson extrapolation in $1/\ell^2$ matching the rational values to ten or more digits and an out-of-grid predictive test at $q = 0.7$ confirmed to eleven digits.
+
+*In plain terms: the two ghost horizons, the complex roots nobody assigns a temperature to, carry a fixed curvature charge. In the electric frame it is minus twenty-seven eighths, always; rotate the background as much as you like, it does not move. In the angular frame it starts at minus twenty-five eighths and is pushed by background charge along an exact polynomial, and by nothing else.*
+
+### 10.3 The rigidity hierarchy
+
+The virtual charges are more rigid than the physical integers. In the $(M,Q)$ frame at fixed $J \neq 0$, the flat-limit physical pair sum is not even constant ($0.404$, $0.344$, $0.504$ across background points), while the virtual pair sits at $-27/8$ to full precision. This is the curvature-level image of Section 9: $R \cdot S$ on the virtual sheets is a pure number of the fluctuation frame, a zero-beta quantity, while all context sensitivity is carried by the physical sheets. The virtual completion is the zero-beta sector of the branched cover. The charge-rotation asymmetry of Section 9 reappears with an inversion we flag honestly: background rotation is inert everywhere (proven exactly in the electric frame), while background charge is the sole agent of deformation, acting only on the angular frame through the even polynomial of (10.4). Charge enters at order $q^2$, whereas the level mismatch of Section 7.11 carries charge as $Q^4/4$ inside $N_L - N_R$; any CFT reading of the virtual charges must account for the mismatch of exponents.
+
+### 10.4 Analytic derivation
+
+Writing $x = 1/\ell$, the virtual branch of (10.1) is
+$$ r_v = \frac{i}{x} - M + \frac{i(3M^2 - Q^2)}{2}\,x + 2M(2M^2 - Q^2)\,x^2 + O(x^3), \tag{10.5}$$
+the conjugate sheet given by $i \to -i$. The branch entropy diverges as $-\pi\ell^2$ while the leading Hessian metric is the constant Lorentzian form $\mathrm{diag}(4\pi, -2\pi)$; curvature enters at order $\ell^{-2}$ and $R\cdot S$ is finite. The exact evaluation uses implicit differentiation of (10.1) through third order (for a Hessian metric the second-derivative block of the Brioschi determinant cancels identically, so third order suffices), the Laurent series (10.5) extended by Newton iteration in truncated Laurent-series arithmetic over the Gaussian rationals, and extraction of the constant term of $R\cdot S$, all negative powers vanishing identically.
+
+### 10.5 Closed-form theorems
+
+With the parameters left symbolic (mass one without loss of generality by scale invariance), per virtual sheet: electric frame, generic $Q$,
+$$ R_v S_v = -\frac{27}{16}; \tag{10.6}$$
+angular frame, generic $Q$,
+$$ R_v S_v = -\frac{25}{16} + \frac{5}{32}q^2 + \frac{1}{32}q^4, \tag{10.7}$$
+a real number, so each sheet of the conjugate pair carries exactly half the pair charge.
+
+### 10.6 The branch-level level map and the general split theorem
+
+For Kerr the individual products admit an exact closed form. With $\nu \equiv \sqrt{N_R/N_L} = \sqrt{1 - J^2/M^4}$, which is also the entropy asymmetry $(S_+ - S_-)/(S_+ + S_-)$,
+$$ R_\pm S_\pm = -\frac{1}{2} \pm \frac{N_R - 2N_L}{2\sqrt{N_L N_R}} = -\frac{1}{2} \pm \left(\frac{\nu}{2} - \frac{1}{\nu}\right). \tag{10.8}$$
+The sum is identically $-1$ and the deck involution $\nu \to -\nu$ exchanges the two expressions. This is the direct map from the curvature invariant to the Kerr/CFT level structure at the level of individual branches, the last link that open problem 4 of Section 12 asked for in the diagonal sector: each horizon carries a universal $-1/2$ plus a level-mismatch term of opposite sign, and the topological $-1$ is the trace over the cover. Equation (10.8) matches the unified curvature of Aman, Bengtsson and Pidokrajt (their Eqs. (35) and (37)) on both branches exactly, an independent check of conventions.
+
+The scope is settled by a general theorem. For any family of the deck-symmetric form $S_\pm = 2\pi\bigl(W(M) \pm \sqrt{W(M)^2 - J^2}\bigr)$ with $W$ an arbitrary function of the mass,
+$$ R_+S_+ + R_-S_- = -1 \ \text{identically}, \qquad R_\pm S_\pm = -\frac{1}{2} \pm D, \qquad D = \frac{(3 - \Sigma_W)\,\nu}{2} - \frac{1}{\nu}, \qquad \Sigma_W \equiv \frac{W' W'''}{W''^2} + \frac{W'^2}{W\,W''}. \tag{10.9}$$
+The integer is a property of the $\pm$ structure alone; the product $S_+S_- = 4\pi^2 J^2$ is automatically mass-free family-wide, so the equivalence of Section 7.11 holds for the whole class. The scale-invariant quantity $\Sigma_W$ equals $2$ for every power law $W = m^p$, independently of $p$: the Kerr split is shared by all scale-covariant families, which is why equal-spin five-dimensional Myers-Perry ($p = 3/2$) follows the Kerr map exactly (verified at machine precision, alongside a forty-digit cross-validation of the outer branch against the closed form of Bravetti, Nettel and Quevedo). Kerr-Sen has $W = M^2 - Q^2/2$, a shifted power law, giving $\Sigma_W = 2/(1 - q^2/2)$; the deviation matches the measured values exactly. The trace is topological and blind to the level coordinate; the branch split measures the scale anomaly of the level coordinate, which background charge induces and rotation does not.
+
+### 10.7 Frame sensitivity of the geometric face
+
+For Kerr-Newman in the two-dimensional angular frame $(M,J)$ at fixed $Q$, the diagonal sum drifts continuously with $Q$ and approaches $-1$ only as $Q \to 0$, the nonperturbative continuation of the charge-breaking coefficient (7.17), while the product face $S_+S_- = \pi^2(4J^2 + Q^4)$ remains exactly mass-free. The geometric face of the equivalence is a property of a fluctuation frame; the product and CFT faces are frame-blind. Kerr-Sen, where (10.9) now supplies the exact split for all charge, is the natural universality test bench.
+
+### 10.8 Quantization pattern and a conjecture
+
+Per virtual sheet the two frame charges are $-27/16 = -3^3/16$ and $-25/16 = -5^2/16$; all exact values obtained are quantized in thirty-seconds per sheet. We flag the $3^3$ and $5^2$ pattern as an observation, not a claim. The two undeformed charges fit a one-parameter formula in the scaling weight $w$ of the second fluctuation coordinate ($w = 1$ for $Q$, $w = 2$ for $J$),
+$$ \text{pair charge} = -\frac{29}{8} + \frac{w}{4}, \tag{10.10}$$
+a conjecture determined by two points and falsifiable on Kerr-Sen (prediction $-27/8$ in its electric frame) and on five-dimensional Myers-Perry at fractional weight.
+
+### 10.9 Monodromy closure and the identity of the virtual sheets
+
+Two exact statements tie the cover to the wave equation. For a neutral massless scalar on RN-AdS the monodromy exponent at each root is $\alpha_i = \omega r_i^2/\Delta'(r_i)$ up to normalization, and for Kerr-AdS it is $\alpha_i = [\omega(r_i^2 + a^2) - m a(1 + r_i^2/\ell^2)]/\Delta'(r_i)$. In both cases
+$$ \sum_{i=1}^{4} \alpha_i = 0 \quad \text{identically, for all } \omega \text{ and } m, \tag{10.11}$$
+verified to forty digits and provable in one line by the residue theorem, since the AdS quartic leaves no residue at infinity. The physical content is sharper than folklore: the exponent at horizon $i$ is the first-law entropy shift per absorbed quantum, $\alpha_i = (\omega\,\partial_M + m\,\partial_J)S_i/4\pi$, so the total is the same derivative of the entropy sum. The closure (10.11) is therefore exactly equivalent, via the criterion of Zhang and Gao, to the mass- and angular-momentum-independence of the all-horizon entropy sum of Wang, Xu and Meng and of Du and Tian: two literatures, black hole monodromy and entropy relations, state the same fact without citing each other, and the virtual horizons are the agents of the closure in both.
+
+The flat-limit bookkeeping identifies the virtual sheets. As $\ell \to \infty$ the physical pair sum tends to $2M\omega$, the known flat value, while the virtual pair sum tends to exactly $-2M\omega$: precisely the monodromy content that flat space carries at its irregular singular point at infinity, as Stokes data. In AdS there is no irregular point; the two virtual roots sit at $r \approx \pm i\ell - M$ as regular singular points, and in the flat limit they run to infinity and merge, the standard confluence that manufactures an irregular singularity from two regular ones. The virtual sheets are the AdS unfolding of the flat-space irregular singularity, and the quantized charges (10.6)-(10.7) are thermodynamic-geometry data attached to the unfolded object.
+
+*In plain terms: in flat space the black hole's wave equation hides part of its structure at infinity, folded up in an object called an irregular singularity. Turning on the cosmological constant unfolds it into two visible points, and those two points are exactly the ghost horizons whose curvature charges we computed.*
+
+The isomonodromy program gives this a precise target. The massless scalar equation on RN-AdS is Fuchsian with five regular singular points; its isomonodromic deformations form a two-time Garnier system, and the thermodynamic fluctuation plane $(M,Q)$ at fixed $\ell$ has exactly that dimension. The framework, up to five regular points with Painleve VI and Garnier tau functions, is established in the isomonodromy school for black hole radial equations (Novaes and Carneiro da Cunha and successors); the conjecture proper to this paper is that the Ruppeiner branch geometry pulls back structures of the Garnier system, with the branch entropies related to the logarithm of the isomonodromic tau function localized at each singular point, and that $-27/16$ appears as tau-function data of the confluence limit.
+
+### 10.10 Status within the program
+
+The naive completion of the diagonal invariant fails: pressure does not conserve the four-sheet trace. What the completion does instead is split the invariant into rigid, quantized pieces attached to the Galois orbits of the horizon polynomial, with the virtual orbit carrying frame-dependent pure numbers and the physical orbit carrying all the context. The four-face equivalence gave the physical integer its readings; the virtual charge is a further object, attached to the completion rather than to either horizon, and it currently has no CFT face. Whether the charges admit a level-structure or tau-function reading, and whether the inert role of $J$ here is the mirror image of its obstruction role in Section 9, are the questions this section leaves open.
+
+*In plain terms: we did not find the conserved total we were looking for. We found something stranger: the imaginary part of the black hole's family tree carries fixed rational numbers, more stable than anything on the real side, and we can now compute them exactly. What they count, nobody knows yet.*
+
+-----
+
+## 11. Adversarial review by an expert panel
+
+The following is a deliberate red-team. Each reviewer is given licence to attack. Responses are recorded, and unresolved points are kept unresolved rather than smoothed over.
+
+**Reviewer A, mathematical relativity (Wald school).**
+*Objection.* “Field equation equals first law” is an on-shell reading, not a theorem in the variational sense. The Cauchy horizon is unstable, so a “first law” on it is formal at best, and writing $T_- < 0$ invites confusion with genuine thermodynamic temperature.
+*Response.* Accepted as a limitation. The construction is algebraic and structural: it concerns the branch structure of the parameter space and the symmetric functions of the two roots, and it is agnostic about the dynamical stability of the inner sheet. The inner first law is used only in the established formal sense of Castro-Rodriguez. The note should and does state plainly that the inner-horizon quantities are formal and that no claim is made that a Cauchy horizon radiates as a stable thermal system.
+
+**Reviewer B, thermodynamic geometry (Ruppeiner).**
+*Objection.* If there is a real mirror, it should act on the thermodynamic metric on $(M,J,Q)$. Is $\sigma$ an isometry of the Ruppeiner metric, and does the branch locus coincide with the curvature singularity that signals the extremal phase transition?
+*Response.* This was the strongest constructive lead, and it has now been carried out in full. The deck involution is an exact involutive (anti)symmetry of the Ruppeiner geometry in both two and three parameters (7.3, 7.8); the extremal branch locus is the curvature singularity, lodged entirely in the mirror-odd sector (7.6). For Kerr each sheet is elementary, $R_\pm = 1/(4\pi M^2) \mp 1/(2\pi\sqrt{M^4-J^2})$ (7.4). For Kerr-Newman the mirror-even curvature is obtained in closed form (7.9), and the determinant identity $\det g^{(+)}\det g^{(-)} = -64\pi^6 M^4 D/P^5$ (7.11) shows that the curvature singularities sit on the extremal locus together with the locus where a horizon metric degenerates. Reissner-Nordstrom is flat on both sheets (7.2), so the effect is purely rotational at leading order. Sharper still, the dimensionless curvatures combine into pure integers in the rotating sector, $R_+ S_+ + R_- S_- = -1$ and $R_+ S_- + R_- S_+ = 3$ (7.13)-(7.14), the diagonal value robust across the two- and three-parameter manifolds and broken only by charge through the closed-form coefficient (7.17). The geometric status of the mirror is now established, not conjectural, across the whole family.
+
+**Reviewer C, string theory and holography (Kerr/CFT).**
+*Objection.* The outer-inner correspondence is already the right-mover and left-mover split of the dual CFT, and the universal product is already in Larsen, Cvetic-Gibbons-Pope, Chen-Liu-Zhang. What is actually new here?
+*Response.* Conceded that the CFT mirror and the product invariant are known. The new content is organizational and is threefold: the explicit identification of the horizon exchange with the deck transformation of a branched cover; the derivation of the universal product as the closure condition of the brand-new constraint-free first law transported across that cover; and the reading of the universal product as the global complement of a local, single-sheet, constraint-free result. The note is offered as a companion that connects a 2026 result to the 2009 to 2012 literature, not as a discovery of the product itself.
+
+**Reviewer D, pure mathematics (algebraic geometry).**
+*Objection.* The language is loose. “Two mirrored planes” and “Janus” are evocative but imprecise. A $2{:}1$ branched cover with a deck involution is a precise object; “two planes in a mirror” is not, and Janus solutions are a specific construction that is not being used.
+*Response.* Accepted, and the precise language is adopted in the body: mirror means the deck transformation $\sigma$ of the branched double cover, full stop. The two-plane phrasing is dropped. Janus and the two-sided eternal black hole (the thermofield double) are retained only as acknowledged analogies in Section 13, with no claim of technical equivalence.
+
+**Reviewer E, journal referee (does it clear the bar).**
+*Objection.* Most ingredients are published. As it stands this is a synthesis, which is valuable but is more naturally a Comment or a companion note than a standalone discovery. For a refereed venue it needs at least one new, falsifiable result.
+*Response.* Agreed on the format. The honest target is an arXiv preprint framed as a companion to arXiv:2605.08235, and, with a new result now in hand, a short paper or a Comment. The required new, falsifiable result is delivered in Section 7: the Kerr mirror sum rule and the deck conjugacy of the thermodynamic curvature, with Section 12 listing what remains open.
+
+**Reviewer F, devil’s advocate (where is this simply wrong).**
+*Objection.* Name the failure modes.
+*Response.* Four are known and are stated in the body. The inner first law is formal (Reviewer A). The clean invariant fails for $\Lambda \ne 0$ in $d \ge 4$ and for $d \ge 6$ Myers-Perry (Section 6). Surface gravity, temperature and Komar energy products are not universal, only the area and entropy products are (Pradhan), so the closure (4.2) cannot be promoted to a balance of temperatures alone. And the matter pressure in Padmanabhan’s identity is not the cosmological pressure of black hole chemistry, so the two “pressures” must never be conflated.
+
+**Panel conclusion.** The algebraic core (Sections 3 to 5) is sound and self-consistent and reduces correctly to closed-form RN and to the Ansorg-Hennig invariant in Kerr-Newman. The framing as a global complement to the constraint-free first law is coherent and is the note’s organizing contribution. The geometric upgrade (Reviewer B) has now been carried out across the whole family in Section 7 and supplies the note’s concrete new results: the closed-form Kerr sheet curvatures, the resolved Kerr-Newman mirror-even curvature, the determinant identity fixing the singular locus, and the dimensionless integer invariants of the rotating sector with the closed-form coefficient by which charge breaks them. The note is suitable for a companion preprint, with its novelty claims restricted to the synthesis and to the geometric results of Section 7, and with Section 12 marking what is still open. The literature search against the thermodynamic-geometry and entropy-relations corpora has since been performed and documented in the companion novelty log; the attributions it produced are incorporated in the body.
+
+-----
+
+## 12. What is established, what is new, what is open
+
+**Established (attributed in Section 14).** Padmanabhan’s field-equation-as-first-law identity. The constraint-free outer-horizon first law and its higher-derivative validity (the companion paper). The inner-horizon first law. The universal entropy and area products. The equivalence of product mass-independence with $T_+S_+ = T_-S_-$ and its breakdown for Kerr-AdS and higher-dimensional Myers-Perry. The non-universality of the surface gravity and temperature products. The scalar curvature of the outer Kerr horizon and its extremal divergence, and prior study of inner-horizon thermodynamic geometry.
+
+**New here (framing).** The identification of the horizon exchange with the deck transformation of the horizon double cover; the derivation of the universal product as the closure of the constraint-free first law transported across that cover; the sum-versus-product reading as quantity-versus-quality; and the placement of the global constraint and the cosmological enthalpy as the mutually exclusive $\Lambda = 0$ and $\Lambda \ne 0$ organizing principles.
+
+**New here (computed, Section 7).** The closed form of each Kerr horizon’s Ruppeiner curvature, $R_\pm = 1/(4\pi M^2) \mp 1/(2\pi\sqrt{M^4-J^2})$, with its mirror-even (pure mass) and mirror-odd (pure extremality) split and the two separated invariants $R_+ + R_- = 1/(2\pi M^2)$ and $R_+ - R_- = -1/(\pi\sqrt{M^4-J^2})$; the exact deck conjugacy $R_- = R_+|*{W\to -W}$ in both two and three parameters; the Kerr-Newman mirror-even curvature $R*+ + R_-$ as a rational function in closed form, verified against independent numerics to sixteen digits; the determinant identity $\det g^{(+)}\det g^{(-)} = -64\pi^6 M^4 D/P^5$; the localization of the extremal curvature singularity entirely in the mirror-odd sector; and the flatness of both Reissner-Nordstrom horizon geometries, which isolates the effect as rotational. And the dimensionless invariants: the two Kerr integers $R_+S_+ + R_-S_- = -1$ and $R_+S_- + R_-S_+ = 3$, mass- and spin-independent and vanishing for Reissner-Nordstrom; their closed-form Kerr-Newman continuations, obtained in the quadratic extension and verified to forty-eight digits; the robustness of the diagonal integer $-1$ across the two- and three-parameter manifolds (where the cross moves from $3$ to $9$); and the closed-form coefficient $c = 3(M^4-2J^2)/(M^2J^2)$ by which charge breaks the diagonal integer, including its divergence as $J\to 0$ and its sign change on $J = M^2/\sqrt{2}$. And the cosmological-constant analog (Section 6): building the Kerr-AdS entropies to first order in $\varepsilon = -\Lambda/3$ gives $R_+S_+ + R_-S_- = -1 + 4J^2(J^2-6M^4)\varepsilon/M^6 + O(\varepsilon^2)$, verified to forty digits, with a coefficient that vanishes at zero spin and keeps a fixed sign sub-extremally, qualitatively opposite to the charge deformation and confirming quantitatively that the integer is a $\Lambda = 0$ feature.
+
+**New here (computed, Section 8: cross-family scope).** The diagonal integer $R_+S_+ + R_-S_- = -1$ verified beyond Einstein-Maxwell: for the Kerr-Sen black hole of heterotic string theory it equals $-1$ at every charge, because the Kerr-Sen entropy product $4\pi^2 J^2$ is charge-independent, and for the five-dimensional Myers-Perry black hole whose product is proportional to $J_aJ_b$; and it is broken exactly where product universality fails, by charge for Kerr-Newman and non-constant for six-dimensional Myers-Perry. The Kerr-Sen and Kerr-Newman comparison isolates the mechanism: the same charge parameter, opposite outcomes, decided only by whether the entropy product depends on the charge. The equivalence of the integer with product universality thus holds across two theories and three spacetime dimensions, in both directions. The Kerr-Sen and Myers-Perry two-horizon invariants are, to our knowledge, computed here for the first time; the entropy products themselves are prior art (Pradhan for Kerr-Sen; Cvetic, Gibbons and Pope for Myers-Perry), as is the outer-branch Myers-Perry curvature (Aman and Pidokrajt; Bravetti, Nettel and Quevedo).
+
+**New here (computed, Section 9: context and the cosmological beta).** With the identity layer now attributed to the entropy-relations corpus (Zhang-Gao first-law criteria and Vandermonde lemma; Wang-Xu-Meng and Du-Tian sum universality; Section 9.1), the new content is the epistemic layer: the decomposition of the local entropy product into a context-complete invariant and a cosmological beta, $S_{\text{phys}} = \pi^3 Q^4\ell^4/\Sigma^2$ with the sum of physical radii as carrier; the Vieta carrier identity $\prod_{\text{phys}} r \cdot \prod_{\text{virt}} r = \text{const}$, showing the virtual-root product to be the universal carrier in every dimension, verified for $d = 4$ through $7$; the dimensional pattern by which the physical product is itself mass-free only in $d=5$; the identification of the four-dimensional beta as a purely cosmological effect, absent in flat Reissner-Nordstrom; the rotation boundary $\prod(r_i^2+a^2) = 4M^2L^4a^2$, by which only the charge sector is context-completable; and the demonstration that the breaking of both the product and the curvature integer is deterministic structure rather than noise, the apparent dispersion being exactly omitted context, with the fragile integer’s breaking collapsing to an analytic function in the cosmological parameter and to a single scaling surface for six-dimensional Myers-Perry.
+
+**New here (computed, Section 10: virtual sheets).** The extension of Ruppeiner geometry to the complex roots of the AdS horizon quartic, an object absent from the literature; the exact virtual-pair curvature charges, $-27/8$ in the electric fluctuation frame (rigid under background rotation, proven symbolically for generic charge) and $(q^2+10)(q^2-5)/16$ in the angular frame (proven symbolically for generic charge, with a factorized deformation polynomial), each sheet carrying exactly half; the refutation of the four-sheet Galois-trace conjecture; the rigidity hierarchy, virtual sheets holding pure numbers while the physical pair drifts with background; the branch-level level map $R_\pm S_\pm = -1/2 \pm (N_R - 2N_L)/(2\sqrt{N_L N_R})$ for Kerr; the general deck-symmetric theorem, sum $= -1$ for arbitrary $W(M)$ with the closed-form split $D = (3-\Sigma_W)\nu/2 - 1/\nu$ and the power-law criterion $\Sigma_W = 2$; the monodromy-exponent closure over the complete root set and its equivalence, via the Zhang-Gao criterion, to the entropy-sum universality, welding two previously disjoint literatures; and the identification of the virtual sheets as the AdS unfolding of the flat-space irregular singularity, carrying exactly the flat monodromy content $-2M\omega$. The scaling-weight formula for the charges and the tau-function reading are stated as conjectures.
+
+**Open (candidate further results).**
+
+1. *Kerr-Newman geometry — now resolved (Section 7).* The closed-form mirror-even curvature, the deck conjugacy in three parameters, and the determinant identity fixing the singular locus are obtained. What remains is interpretive: whether the degeneracy locus $D = 0$ coincides with a known thermodynamic-stability boundary (a Davies-type curve) of Kerr-Newman, and whether a single scalar invariant cleaner than the degree-24 curvature governs the three-parameter mirror.
+1. *Higher-derivative loop.* The constraint-free method is valid in higher-derivative gravity, but the universal product is known to fail in some such theories. Test whether the loop (Section 4) still closes there, and if not, what weaker invariant replaces (4.3). A clean failure here is as publishable as a clean success.
+1. *Holonomy form.* Express the closure condition as the vanishing of a holonomy around the loop, giving a single invariant whose zero set is the locus where the two-horizon description is consistent. This would turn the verbal “loop closes” into a computable quantity.
+1. *Meaning of the integers.* The dimensionless sums (7.13)-(7.15) are pure integers for Kerr, and the breaking coefficient (7.16) is rational and simple. Two of the three parts of an explanation are now in place. Section 7.11 shows that the diagonal integer appears exactly when the entropy product is mass-independent, and the same section places that condition inside the Kerr/CFT family, where it coincides with the level-matching $S_\pm = 2\pi(\sqrt{N_L} \pm \sqrt{N_R})$ and with the equality of the left and right central charges. The diagonal part of that last link is now supplied by Section 10.6: the branch-level map expresses $R_\pm S_\pm$ directly in $N_L$ and $N_R$, with the $-1$ as the trace. What remains is the cross sector: a map for the cross combination, which would express the specific values, the diagonal $-1$ and the cross $3$ in two dimensions moving to $9$ in three, as combinations of $c_L$ and $c_R$ or of $N_L$ and $N_R$, rather than as computed constants. The move of the cross from $3$ to $9$ across dimension is the sharpest target for such a map. A topological reading, an Euler-characteristic or index of the two-sheeted geometry, remains the alternative.
+1. *Extended phase space.* This is now largely resolved, in the negative, and the resolution is structural rather than a failed search. Section 7.11 shows the diagonal integer to be the geometric shadow of the mass-independent entropy product, and the product universality fails for Kerr-AdS at the same order at which the integer breaks, (7.25) against (6.1). The pressure that takes the theory into black hole chemistry is identically the deformation that dissolves the universal product, so there is no clean enthalpic continuation of the integer to be found; the volume direction is moreover degenerate at zero pressure, the Jacobian vanishing as $\ell^{-3}$ (Section 6). What genuinely remains is narrower and sharper: whether the three-dimensional extended geometry at fixed nonzero pressure carries any invariant of a different kind, for instance a constant of the heat-capacity-normalized curvature $R_N = C_V R$ at the Kerr-AdS critical point, in the spirit of the universal value found by Wei, Liu and Mann for charged AdS black holes. That is a question about a different object, not about the survival of this integer, which Section 7.11 shows cannot survive.
+
+-----
+
+## 13. Acknowledged analogies (used, not claimed)
+
+Two genuine two-sided structures in the literature share the flavour of the mirror but are not invoked as part of the derivation. The eternal, maximally extended black hole and its thermofield-double description glue two asymptotic copies through entanglement, which is a literal two-sided object. Janus solutions are a named family of interface solutions with a two-sided character. These are recorded as conceptual neighbours of the deck-transformation mirror, nothing more. No technical identification is asserted.
+
+-----
+
+## 14. References
+
+1. G. Ahn, I. Bae, G. Jang, Y. Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235 (Int. J. Mod. Phys. D, 2026).
+1. T. Padmanabhan, *Classical and quantum thermodynamics of horizons in spherically symmetric spacetimes*, Class. Quant. Grav. 19 (2002) 5387.
+1. T. Padmanabhan, *Gravity and the thermodynamics of horizons*, Phys. Rept. 406 (2005) 49.
+1. F. Larsen, *A string model of black hole microstates*, Phys. Rev. D 56 (1997) 1005.
+1. M. Ansorg, J. Hennig, *Inner Cauchy horizon of axisymmetric and stationary black holes with surrounding matter*, Phys. Rev. Lett. 102 (2009) 221102.
+1. M. Cvetic, G. W. Gibbons, C. N. Pope, *Universal area product formula for rotating and charged black holes in four and higher dimensions*, Phys. Rev. Lett. 106 (2011) 121301.
+1. A. Castro, M. J. Rodriguez, *Universal properties and the first law of black hole inner mechanics*, Phys. Rev. D 86 (2012) 024008.
+1. B. Chen, S.-X. Liu, J.-J. Zhang, *Thermodynamics of black hole horizons and Kerr/CFT correspondence*, JHEP 11 (2012) 017.
+1. M. Visser, *Area products for stationary black hole horizons*, Phys. Rev. D 88 (2013) 044014.
+1. P. Pradhan, *Black hole interior mass formula*, Eur. Phys. J. C 74 (2014) 2887.
+1. S.-Q. Wu, *New formulation of the first law of black hole thermodynamics: a stringy analogy*, Phys. Rev. D 70 (2004) 084012.
+1. G. Ruppeiner, *Riemannian geometry in thermodynamic fluctuation theory*, Rev. Mod. Phys. 67 (1995) 605.
+1. D. Kastor, S. Ray, J. Traschen, *Enthalpy and the mechanics of AdS black holes*, Class. Quant. Grav. 26 (2009) 195011.
+1. D. Kubiznak, R. B. Mann, *P-V criticality of charged AdS black holes*, JHEP 07 (2012) 033.
+1. J. M. Maldacena, *Eternal black holes in anti-de Sitter*, JHEP 04 (2003) 021.
+1. D. Bak, M. Gutperle, S. Hirano, *A dilatonic deformation of AdS5 and its field theory dual* (Janus), JHEP 05 (2003) 072.
+1. J. E. Aman, N. Pidokrajt, *Geometry of higher-dimensional black hole thermodynamics*, Phys. Rev. D 73 (2006) 024017.
+1. J. E. Aman, I. Bengtsson, N. Pidokrajt, *Flat information geometries in black hole thermodynamics*, Gen. Rel. Grav. 38 (2006) 1305.
+1. J. E. Aman, I. Bengtsson, N. Pidokrajt, *Thermodynamic metrics and black hole physics*, Entropy 17 (2015) 6503, arXiv:1507.06097.
+1. J. E. Aman, N. Pidokrajt, *On explicit thermodynamic functions and extremal limits of Myers-Perry black holes*, Eur. Phys. J. C 73 (2013) 2601, arXiv:1004.5550.
+1. M. Cvetic, G. W. Gibbons, H. Lu, C. N. Pope, *Killing horizons: negative temperatures and entropy super-additivity*, Phys. Rev. D 98 (2018) 106015, arXiv:1806.11134.
+1. A. Curir, *Spin entropy of a rotating black hole*, Nuovo Cimento B 51 (1979) 262.
+1. I. Okamoto, O. Kaburaki, *The inner-horizon thermodynamics of Kerr black holes*, Mon. Not. R. Astron. Soc. 255 (1992) 539.
+1. P. Pradhan, *Thermodynamic products for Sen black hole*, Eur. Phys. J. C 76 (2016) 31, arXiv:1503.04514.
+1. A. Bravetti, F. Nettel, H. Quevedo, *Geometrothermodynamics of Myers-Perry black holes*, Adv. High Energy Phys. 2013 (2013) 549808.
+1. J. Wang, W. Xu, X.-H. Meng, *The universal property of horizon entropy sum of black holes in four dimensional asymptotical (anti-)de Sitter spacetime background*, JHEP 01 (2014) 031, arXiv:1310.6811.
+1. W. Xu, J. Wang, X.-H. Meng, *A note on entropy relations of black hole horizons*, Int. J. Mod. Phys. A 29 (2014) 1450088, arXiv:1401.5180.
+1. Y.-Q. Du, Y. Tian, *The universal property of the entropy sum of black holes in all dimensions*, Phys. Lett. B 739 (2014) 250.
+1. Y. Zhang, S. Gao, *Mass dependence of the entropy product and sum*, Phys. Rev. D 91 (2015) 064032, arXiv:1410.7222.
+1. D. N. Page, A. A. Shoom, *Universal area product for black holes: a heuristic argument*, Phys. Rev. D 92 (2015) 044039, arXiv:1504.05581.
+1. A. Castro, J. M. Lapan, A. Maloney, M. J. Rodriguez, *Black hole monodromy and conformal field theory*, Phys. Rev. D 88 (2013) 044003, arXiv:1303.0759.
+1. A. Castro, N. Dehmami, G. Giribet, D. Kastor, *On the universality of inner black hole mechanics and higher curvature gravity*, JHEP 07 (2013) 164, arXiv:1304.1696.
+1. F. Novaes, B. Carneiro da Cunha, *Isomonodromy, Painleve transcendents and scattering off of black holes*, JHEP 07 (2014) 132.
+1. J. Barragan Amado, B. Carneiro da Cunha, E. Pallante, and successors, isomonodromic methods for black hole radial equations; see e.g. arXiv:2309.11355 and arXiv:2307.16209.
+1. F. Larsen, M. Cvetic, *General rotating black holes in string theory: grey body factors and event horizons*, Phys. Rev. D 56 (1997) 4994.
+1. H. Suzuki, E. Takasugi, H. Umetsu, *Perturbations of Kerr-de Sitter black hole and Heun's equations*, Prog. Theor. Phys. 100 (1998) 491.
+
+-----
+
+*End of draft. Equation labels and section numbering are provisional. The Kerr curvature identities of Section 7 (the deck conjugacy, the sum rule $R_+ + R_- = 1/(2\pi M^2)$, the product, and the extremal divergence) were obtained symbolically and cross-checked numerically, and the flatness of Reissner-Nordstrom was verified directly; these should be reproduced independently before submission. Reference details should be verified against the originals. The dedicated novelty search has been performed and is documented in the companion novelty log, which also records two independent forty-digit cross-validations of the closed forms of Sections 7 and 10 against published results (Aman-Bengtsson-Pidokrajt 2015; Bravetti-Nettel-Quevedo 2013) and the resulting attributions incorporated throughout the body.*
