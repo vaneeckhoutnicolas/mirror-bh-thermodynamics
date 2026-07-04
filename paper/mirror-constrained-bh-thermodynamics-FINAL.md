@@ -22,7 +22,7 @@ T,dS - dE = P,dV ,
 $$
 with $T = \kappa/2\pi$, $S = A/4$, and $P = T^{r}{}_{r}$ the radial matter pressure at the horizon. For multi-horizon black holes the standard practice was to restrict variations to the outer horizon by imposing an extra constraint and to build the work term by multiplying the horizon field equation by the volume variation $dV$.
 
-Ahn, Bae, Jang and Kwon remove that crutch. They multiply the horizon field equation by the entropy variation $dS$ under unconstrained variations of the black hole parameters, which lets both horizons move, retains validity in higher-derivative gravity, and avoids the breakdown of $r_\pm$-based schemes for black holes with three independent parameters $(M,J,Q)$. Working directly in the $(M,J,Q)$ state space, they show that the field equation at the outer horizon is itself the first law for general variations, with no added constraint.
+Ahn, Bae, Jang and Kwon remove that crutch. They multiply the horizon field equation by the entropy variation $dS$ under unconstrained variations of the black hole parameters, which lets both horizons move, retains validity in higher-derivative gravity, and avoids the breakdown of $r_\pm$-based schemes for black holes with three independent parameters $(M,J,Q)$. Working directly in the $(M,J,Q)$ state space, they show that the field equation at the outer horizon is itself the first law for general variations, with no added constraint. The multi-horizon field-equation approach itself goes back to Kwon and Nam, who first argued that the field equations at the inner horizon must enter alongside the outer one.
 
 This is a clean result, and it raises an immediate question. If the outer horizon alone suffices to produce the first law, what has become of the inner horizon? The inner horizon does not disappear when the parameters vary; the abstract of the constraint-free paper is explicit that a general variation shifts both horizons. The information about the inner horizon must therefore be encoded somewhere in the structure of the $(M,J,Q)$ description. The thesis of this note is that it is encoded as a global constraint with a precise geometric origin, that this constraint is the natural complement of the local constraint-free first law, and that the two together form a closed loop. The organizing object is a discrete mirror symmetry exchanging the two horizons.
 
@@ -659,6 +659,7 @@ Two genuine two-sided structures in the literature share the flavour of the mirr
 
 1. G. Ahn, I. Bae, G. Jang, Y. Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235 (Int. J. Mod. Phys. D, 2026).
 1. T. Padmanabhan, *Classical and quantum thermodynamics of horizons in spherically symmetric spacetimes*, Class. Quant. Grav. 19 (2002) 5387.
+1. Y. Kwon, S. Nam, *Thermodynamics from field equations for black holes with multiple horizons*, arXiv:1310.4933.
 1. T. Padmanabhan, *Gravity and the thermodynamics of horizons*, Phys. Rept. 406 (2005) 49.
 1. F. Larsen, *A string model of black hole microstates*, Phys. Rev. D 56 (1997) 1005.
 1. M. Ansorg, J. Hennig, *Inner Cauchy horizon of axisymmetric and stationary black holes with surrounding matter*, Phys. Rev. Lett. 102 (2009) 221102.
