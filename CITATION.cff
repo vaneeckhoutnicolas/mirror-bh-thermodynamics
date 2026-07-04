@@ -5,6 +5,7 @@ authors:
   - family-names: "Van Eeckhout"
     given-names: "Nicolas"
     affiliation: "Win2Win SRL, Brussels, Belgium"
+    orcid: "https://orcid.org/0000-0002-5256-3185"
 type: software
 repository-code: "https://github.com/vaneeckhoutnicolas/mirror-bh-thermodynamics"
 license: MIT

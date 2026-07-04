@@ -2,6 +2,7 @@
 
 **Nicolas Van Eeckhout**
 Independent researcher, Win2Win SRL, Brussels, Belgium.
+ORCID: [0000-0002-5256-3185](https://orcid.org/0000-0002-5256-3185)
 Sole author of the manuscript, the ancillary file, the novelty review, and the computation code.
 
 ## Acknowledgements
