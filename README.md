@@ -2,7 +2,7 @@
 
 Companion research to Ahn, Bae, Jang, Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235.
 
-**Author:** N. Van Eeckhout (Win2Win SRL, Brussels). Independent research.
+**Author:** N. Van Eeckhout, independent researcher, Brussels.
 
 **Status:** preprint draft, prepared for arXiv (gr-qc). Not yet submitted. Please do not cite without contacting the author.
 

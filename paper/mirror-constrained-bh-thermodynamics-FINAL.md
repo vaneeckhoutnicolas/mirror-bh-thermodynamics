@@ -2,7 +2,7 @@
 
 ### A Two-Horizon Companion to the Constraint-Free First Law
 
-**Author.** N. Van Eeckhout (independent; Win2Win SRL, Brussels)
+**Author.** N. Van Eeckhout, independent researcher, Brussels
 **Status.** Working draft / research note. Intended as a companion to Ahn, Bae, Jang and Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235 (Int. J. Mod. Phys. D, 2026).
 **Note on method.** Section 11 contains an adversarial review by a panel of expert personas. The panel is an analytic device used to stress-test the proposal, not a set of real endorsements. Every load-bearing physics result outside the new framing is attributed to its original authors in Section 14.
 
