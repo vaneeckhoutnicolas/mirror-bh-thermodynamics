@@ -1,0 +1,450 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\allowdisplaybreaks
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\SW}{\Sigma_{W}}
+
+\title{Two horizon Ruppeiner geometry of level homogeneous black hole entropies}
+\author{N.~Van Eeckhout\\ \small Independent researcher, Brussels, Belgium\\ \small ORCID: 0000-0002-5256-3185}
+\date{Version 2, November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Ruppeiner metric of the Kerr black hole is known in closed form on both of its horizons, and the curvature of entropies of the quasi homogeneous form $S=M^{a}f(M^{b}J)$ is known in general, through the work of {\AA}man, Bengtsson and Pidokrajt. We extend these results to entropies of the form $S=W(M)\,s(J/W(M))$ with an arbitrary level function $W$, a class that contains Kerr in any dimension, the Kerr Sen black hole at fixed charge and the five dimensional Myers Perry black hole with equal spins. In the coordinates $(M,\,j=J/W)$ the metric is diagonal, and the product of the scalar curvature and the entropy is $RS=-\frac{s}{2\alpha}\bigl[\SW+js'''/s''+j^{2}s''/\alpha\bigr]$ with $\alpha=s-js'$. The level function enters only through $\SW=W'W'''/W''^{2}+W'^{2}/(WW'')$, which equals $2$ exactly for power laws and exponentials. For the two branch family $S_{\pm}=2\pi\bigl(W\pm\sqrt{W^{2}-J^{2}}\bigr)$ this gives $R_{\pm}S_{\pm}=-\tfrac12\pm\bigl[(3-\SW)\nu/2-1/\nu\bigr]$ with $\nu=(S_{+}-S_{-})/(S_{+}+S_{-})$. Hence $R_{+}S_{+}+R_{-}S_{-}=-1$ for every level function, while $R_{+}S_{-}+R_{-}S_{+}=3$ holds only if $\SW=2$. We prove an exact converse: among entropies with $S_{+}+S_{-}=4\pi W(M)$ and $S_{+}S_{-}=4\pi^{2}k(J)$, the sum equals $-1$ for every $W$ if and only if $k$ is the square of an affine function. A mass independent entropy product is therefore not sufficient: for Kerr Newman at fixed charge the sum is $-1+Q^{4}(3M^{4}-J^{2})/(4M^{4}J^{2})+O(Q^{6})$. The single horizon value $RS=-1$ of five dimensional Kerr, published in 2006, is the companion case $S\propto\sqrt{W^{2}-J^{2}}$. Every statement is replayed by a computer algebra script that accompanies the article.
+\end{abstract}
+
+\emph{Preprint, not peer reviewed. The script \texttt{replay\_short\_article.py} replays every statement; its check tags are listed in Appendix~\ref{app:replay}.}
+
+\section{Introduction}\label{sec:intro}
+
+Thermodynamic fluctuation theory equips the space of equilibrium states with the Ruppeiner metric, the negative Hessian of the entropy in the conserved quantities \cite{Rup}. For black holes, {\AA}man, Bengtsson and Pidokrajt have obtained a body of closed form results. For the Kerr black hole with one spin in any dimension, \cite{AP06} introduces the coordinate $J/S$, writes the Weinhold metric in a flat diagonal form, obtains the Ruppeiner metric from it through the conformal factor $1/T$, and gives the curvature scalar for every dimension; in five dimensions it is $R=-1/S$. In \cite{ABP06} the Hessian metric of any potential of the quasi homogeneous form $x^{a}f(x^{b}y)$ is studied, with a flatness theorem and a general formula for the curvature scalar. In \cite{ABP15} both horizons of the Kerr black hole are treated: the metrics of the outer and of the inner horizon are written in diagonal form, and the entropy and the curvature scalar are written in coordinates that cover the state spaces of both horizons.
+
+The entropy $S_{-}$ of the inner horizon and the product $S_{+}S_{-}$ have a long history of their own \cite{Curir,OK,AH,CGP,CR,CLZ}. For Kerr the product is $4\pi^{2}J^{2}$ and does not depend on the mass. A recent formulation of black hole thermodynamics obtained directly from the field equations \cite{ABJK} was the starting point of this work.
+
+This article asks what the Ruppeiner curvatures of the two horizons satisfy as a pair. For Kerr the answer can be read off from \cite{ABP15}. In terms of their angular coordinate $\beta$, which covers the outer horizon for $|\beta|\le\pi/4$ and the inner one for $\pi/4\le|\beta|\le\pi/2$, their entropy and curvature scalar give $RS=f(\cos2\beta)$ with $f(x)=-\tfrac12-\tfrac1x+\tfrac x2$. At given $M$ and $J$ the outer horizon is $\cos2\beta=\nu$ and the inner one $\cos2\beta=-\nu$, where $\nu=\sqrt{1-J^{2}/M^{4}}$. Hence
+\begin{equation}\label{eq:kerrpair}
+R_{+}S_{+}+R_{-}S_{-}=-1,
+\qquad
+R_{+}S_{-}+R_{-}S_{+}=3 ,
+\end{equation}
+two relations that we have not found stated. Our purpose is to identify the structure responsible for them and its exact scope. The results are the following.
+\begin{enumerate}
+\item For entropies $S=W(M)\,s(J/W(M))$, with $W$ an arbitrary function, the Ruppeiner metric is diagonal in the coordinates $(M,J/W)$ and the two functions $W$ and $s$ separate (Proposition~\ref{prop:diag}). For Kerr this is the form of \cite{ABP15}.
+\item The product $RS$ has a closed form in which $W$ enters only through one scale invariant combination $\SW$, and linearly (Proposition~\ref{prop:curv}). One has $\SW=2$ exactly when $W$ is a power law or an exponential (Lemma~\ref{lem:sigma}); for power laws the formula is a case of the general curvature of \cite{ABP06}.
+\item For the two branch family $S_{\pm}=2\pi(W\pm\sqrt{W^{2}-J^{2}})$ the first relation of \eqref{eq:kerrpair} holds for every level function, and the second one holds only if $\SW=2$ (Theorem~\ref{thm:mirror} and Corollary~\ref{cor:cross}). The Kerr Sen black hole at fixed charge is an example with $\SW\neq2$.
+\item The value $RS=-1$ on the single horizon of five dimensional Kerr \cite{AP06} is the case $S\propto\sqrt{W^{2}-J^{2}}$ of the same formula (Proposition~\ref{prop:odd}).
+\item Conversely, if $S_{+}+S_{-}=4\pi W(M)$ and $S_{+}S_{-}=4\pi^{2}k(J)$, the first relation of \eqref{eq:kerrpair} holds for every $W$ if and only if $k$ is the square of an affine function (Theorem~\ref{thm:converse}). A mass independent product is not enough: Kerr Newman at fixed charge violates the relation at order $Q^{4}$ (Corollary~\ref{cor:kn}).
+\end{enumerate}
+
+The scope is deliberately narrow. All statements concern the Hessian metric in two fluctuating charges, with every other parameter held fixed, and Hessian metrics are not covariant under nonlinear changes of the charges. The entropy of the inner horizon is used in the formal sense of the literature cited above. We do not propose a physical interpretation of the number $-1$, and we do not treat a cosmological constant.
+
+What is taken from earlier work is stated where it is used: the diagonal form for Kerr \cite{ABP15}, the coordinate $J/S$ and the conformal relation with the Weinhold metric \cite{AP06}, the power law case of the curvature formula \cite{ABP06}, and the five dimensional value \cite{AP06}. What we add is the arbitrary level function, the statements on the pair of horizons, and the converse.
+
+Every displayed statement is an exact identity that a script checks symbolically, or a numerical statement at stated precision. The correspondence between statements and checks is given in Appendix~\ref{app:replay}.
+
+\section{Setting}\label{sec:setting}
+
+\subsection{Conventions}
+
+We use units $G=c=\hbar=k_{B}=1$, so that the entropy of a horizon is a quarter of its area. Let $S(M,J)$ be an entropy as a function of the mass $M$ and of one further conserved charge $J$. The Ruppeiner metric is
+\begin{equation}\label{eq:rup}
+g=-\frac{\partial^{2}S}{\partial x^{a}\partial x^{b}}\,dx^{a}dx^{b},
+\qquad (x^{1},x^{2})=(M,J),
+\end{equation}
+and $R$ denotes its scalar curvature, with the sign for which the unit round sphere has $R=2$. With this convention the curvature scalars of \cite{AP06}, \cite{ABP15} and \cite{BMMA} are reproduced with their signs.
+
+Two elementary invariances are used throughout. First, under an affine change of the coordinates $(M,J)$ the Hessian transforms as a tensor, so $R$ and $S$ are unchanged as functions on the state space. Second, under $S\to cS$ with a constant $c>0$ one has $g\to cg$ and $R\to R/c$, so the product $RS$ is unchanged. The product $RS$ can therefore be compared between papers that normalize the entropy and the charge differently.
+
+\subsection{Level homogeneous entropies}
+
+\begin{definition}\label{def:lh}
+An entropy $S(M,J)$ is \emph{level homogeneous} if there are a function $W$ of the mass, the \emph{level function}, and a function $s$ of one variable, the \emph{shape function}, such that
+\begin{equation}\label{eq:class}
+S(M,J)=W(M)\,s(j),\qquad j=\frac{J}{W(M)} .
+\end{equation}
+We assume that $W$, $W'$, $W''$, $s$, $s''$ and
+\begin{equation}\label{eq:alpha}
+\alpha(j)=s(j)-j\,s'(j)
+\end{equation}
+do not vanish on the domain considered.
+\end{definition}
+
+Equivalently, the fundamental relation has the form
+\begin{equation}\label{eq:phi}
+W(M)=S\,\varphi\!\left(\frac{J}{S}\right),
+\end{equation}
+where $\varphi$ is defined by $s\,\varphi(j/s)=1$. From \eqref{eq:class},
+\begin{equation}\label{eq:first}
+\frac{\partial S}{\partial M}=W'\alpha,\qquad \frac{\partial S}{\partial J}=s' ,
+\end{equation}
+so that the temperature is $T=1/(W'\alpha)$, and $\alpha$ is the derivative of $S$ with respect to $W$ at fixed $J$.
+
+For a power law $W=M^{a}$, relation \eqref{eq:class} reads $S=M^{a}s(M^{-a}J)$. This is the case $a+b=0$ of the potentials $x^{a}f(x^{b}y)$ of \cite{ABP06}, called quasi homogeneous there; see also \cite{HS}, cited in \cite{ABP06}, and \cite{Que}. For a general level function the entropy \eqref{eq:class} is homogeneous of degree one in the pair $(W(M),J)$ but it is not quasi homogeneous in $(M,J)$. This is why a separate name is used.
+
+\subsection{Examples}\label{sec:examples}
+
+\begin{enumerate}
+\item[(a)] \emph{Kerr.} $S_{\pm}=2\pi\bigl(M^{2}\pm\sqrt{M^{4}-J^{2}}\bigr)$, that is $W=M^{2}$ and $s_{\pm}(j)=2\pi\bigl(1\pm\sqrt{1-j^{2}}\bigr)$; in the form \eqref{eq:phi}, $\varphi(\sigma)=1/(4\pi)+\pi\sigma^{2}$ for both signs \cite{ABP15}.
+\item[(b)] \emph{Kerr Sen at fixed charge $Q$.} $S_{\pm}=2\pi\bigl(W\pm\sqrt{W^{2}-J^{2}}\bigr)$ with $W=M^{2}-Q^{2}/2$ \cite{Sen,Pra}.
+\item[(c)] \emph{Myers Perry in five dimensions with equal angular momenta $J_{1}=J_{2}=J$.} $S_{\pm}=2\pi\bigl(W\pm\sqrt{W^{2}-J^{2}}\bigr)$ with $W=(\pi/8)\,\mu^{3/2}$ and $\mu=8M/(3\pi)$ \cite{MP,BMMA}.
+\item[(d)] \emph{Kerr with one spin in $d$ dimensions.} In the normalization of \cite{AP06}, relation \eqref{eq:phi} holds with $W=(4M/(d-2))^{(d-2)/(d-3)}$ and $\varphi(u)=(1+4u^{2})^{1/(d-3)}$. For $d=5$ this is $S=\sqrt{W^{2}-4J^{2}}$.
+\end{enumerate}
+In (a), (b) and (c) the two signs are the outer and the inner horizon. For the lower sign $\partial S/\partial M<0$: the temperature of the inner horizon is negative \cite{ABP15}.
+
+\section{The diagonal form of the metric}\label{sec:diag}
+
+\begin{proposition}\label{prop:diag}
+For a level homogeneous entropy \eqref{eq:class}, the Ruppeiner metric in the coordinates $(M,j)$ is
+\begin{equation}\label{eq:diag}
+g=-\,W''(M)\,\alpha(j)\,dM^{2}-W(M)\,s''(j)\,dj^{2} ,
+\end{equation}
+and in the coordinates $(M,J)$ its determinant is
+\begin{equation}\label{eq:det}
+\det g=\frac{W''\,s''\,\alpha}{W} .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:first}, $dS=W'\alpha\,dM+s'\,dJ$. Since $M$ and $J$ are the coordinates in which the Hessian is taken, a second differentiation gives
+\[
+\frac{\partial^{2}S}{\partial x^{a}\partial x^{b}}\,dx^{a}dx^{b}
+=\bigl(W''\alpha\,dM+W'\alpha'\,dj\bigr)\,dM+s''\,dj\,dJ .
+\]
+Now $dJ=W\,dj+jW'\,dM$ and $\alpha'=-j\,s''$, so the two terms in $dM\,dj$ cancel and the right hand side is $W''\alpha\,dM^{2}+W s''\,dj^{2}$. The determinant follows from $dM\wedge dJ=W\,dM\wedge dj$.
+\end{proof}
+
+\begin{remark}\label{rem:prior}
+(i) For Kerr, with $s_{\pm}$ of example (a), equation \eqref{eq:diag} is equation (29) of \cite{ABP15} on both horizons; their coordinate $a=J/M^{2}$ is our $j$.
+
+(ii) In terms of $\sigma=J/S$ and of the function $\varphi$ of \eqref{eq:phi}, the metric \eqref{eq:diag} reads
+\begin{equation}\label{eq:sigmaform}
+g=\frac{1}{\varphi-\sigma\varphi'}\Bigl[-W''(M)\,dM^{2}+W(M)\,\frac{\varphi''}{\varphi}\,d\sigma^{2}\Bigr],
+\end{equation}
+because $\varphi-\sigma\varphi'=1/\alpha$. The bracket divided by $W'$ is the Weinhold metric, the Hessian of $M$ in $(S,J)$, and $(\varphi-\sigma\varphi')/W'$ is the temperature. Equation \eqref{eq:sigmaform} is thus the conformal relation between the two metrics used in \cite{AP06}. The coordinate $J/S$ and the diagonal Weinhold form are due to \cite{AP06} for Kerr in any dimension, and \cite{ABP06} treats the power law class. What Proposition~\ref{prop:diag} adds is the arbitrary level function, and the form \eqref{eq:diag} in which $W$ and $s$ separate.
+
+(iii) By \eqref{eq:det} the metric is indefinite where $W''s''\alpha/W<0$. This is the case on both branches of the family of Section~\ref{sec:mirror} when $WW''>0$.
+\end{remark}
+
+\section{The curvature}\label{sec:curv}
+
+\begin{proposition}\label{prop:curv}
+For a level homogeneous entropy \eqref{eq:class},
+\begin{equation}\label{eq:RS}
+R\,S=-\frac{s}{2\alpha}\left[\SW+\frac{j\,s'''}{s''}+\frac{j^{2}s''}{\alpha}\right],
+\end{equation}
+where
+\begin{equation}\label{eq:sigmaW}
+\SW=\frac{W'W'''}{W''^{2}}+\frac{W'^{2}}{W\,W''} .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For a metric $E\,du^{2}+G\,dv^{2}$ the Gaussian curvature is
+\begin{equation}\label{eq:gauss}
+K=-\frac{E_{vv}+G_{uu}}{2EG}+\frac{E_{u}G_{u}+E_{v}^{2}}{4E^{2}G}+\frac{E_{v}G_{v}+G_{u}^{2}}{4EG^{2}} ,
+\end{equation}
+an algebraic identity in $E$, $G$ and their derivatives, valid for either signature, and $R=2K$. Take $u=M$, $v=j$, $E=-W''\alpha$ and $G=-W\beta$ with $\beta=s''$, as given by \eqref{eq:diag}. Then
+\[
+K=\frac{1}{4W\alpha}\left[\frac{2(\alpha''+\beta)}{\beta}-\SW-\frac{\alpha'^{2}}{\alpha\beta}-\frac{\alpha'\beta'}{\beta^{2}}\right].
+\]
+Since $\alpha'=-j\beta$ and $\alpha''=-\beta-j\beta'$, the bracket equals $-\bigl[\SW+j\beta'/\beta+j^{2}\beta/\alpha\bigr]$, and $RS=2KWs$.
+\end{proof}
+
+\begin{remark}\label{rem:linear}
+The level function enters \eqref{eq:RS} only through $\SW$, and linearly. By \eqref{eq:first} its coefficient is $-s/(2\alpha)=-\tfrac12\,(\partial\ln S/\partial\ln W)^{-1}$. The combination $\SW$ is invariant under $W\to cW$ and under affine changes of $M$.
+\end{remark}
+
+\begin{lemma}\label{lem:sigma}
+Let $W$, $W'$ and $W''$ be nonzero on an interval. Then $\SW=2$ on that interval if and only if $W=c\,(M-M_{0})^{p}$ or $W=c\,e^{\lambda M}$, with constants $c$, $M_{0}$, $p$, $\lambda$.
+\end{lemma}
+
+\begin{proof}
+Put $h=W'/W''$ and $\ell=W/W'$. Then $h'=1-W'W'''/W''^{2}$ and $\ell'=1-\ell/h$, so that $\SW=1-h'+h/\ell$. Hence $\SW=2$ if and only if $h'=(h-\ell)/\ell$. Together with $\ell'=(h-\ell)/h$ this gives $(h/\ell)'=0$, so $h=\kappa\ell$ with a constant $\kappa$, and $\ell'=1-1/\kappa$ is constant. If $\kappa=1$, $\ell$ is constant and $W$ is an exponential. Otherwise $\ell=(M-M_{0})/p$ with $1/p=1-1/\kappa$, and $W$ is a power of $M-M_{0}$. Conversely both families give $\SW=2$ by direct substitution.
+\end{proof}
+
+\begin{remark}[Relation to the general curvature of \cite{ABP06}]\label{rem:abp}
+For $W=M^{a}$ the class \eqref{eq:class} is the case $a+b=0$ of \cite{ABP06}, and $\SW=2$. Equation (17) of that paper gives the curvature scalar of the Hessian metric of $\psi=x^{a}f(x^{b}y)$ for general $a$, $b$ and $f$, as a sum of seven terms. With $\psi=S$ it is the scalar curvature of the Ruppeiner metric in the convention used here. At $a+b=0$ three of the seven terms vanish, and the remaining four give exactly \eqref{eq:RS} with $\SW=2$:
+\[
+R=-\frac{2ss''+j\,ss'''-2j\,s's''-j^{2}s's'''+j^{2}s''^{2}}{2\,s''\,M^{a}\,(s-js')^{2}} .
+\]
+For power laws Proposition~\ref{prop:curv} is therefore contained in \cite{ABP06}. What it adds is the case of a level function that is not a power law, where the only change is that the factor $2$ of the combination $2s''(s-js')$ in the numerator becomes $\SW$.
+\end{remark}
+
+\begin{remark}\label{rem:ap50}
+For example (d), equation \eqref{eq:RS} gives
+\[
+R\,S=-\frac{1-12\kappa u^{2}}{(1-4\kappa u^{2})(1+4\kappa u^{2})},\qquad \kappa=\frac{d-5}{d-3},\quad u=\frac JS ,
+\]
+which is equation (50) of \cite{AP06}.
+\end{remark}
+
+\section{The two branch family}\label{sec:mirror}
+
+Consider, for a level function $W$ with $W'W''\neq0$, the two entropies
+\begin{equation}\label{eq:family}
+S_{\pm}=2\pi\Bigl(W(M)\pm\sqrt{W(M)^{2}-J^{2}}\Bigr),\qquad W>|J|>0 ,
+\end{equation}
+and put
+\begin{equation}\label{eq:nu}
+\nu=\sqrt{1-\frac{J^{2}}{W^{2}}}=\frac{S_{+}-S_{-}}{S_{+}+S_{-}}\in(0,1) .
+\end{equation}
+One has $S_{+}+S_{-}=4\pi W$ and $S_{+}S_{-}=4\pi^{2}J^{2}$. Examples (a), (b) and (c) of Section~\ref{sec:examples} are of this form.
+
+\begin{theorem}\label{thm:mirror}
+For the family \eqref{eq:family},
+\begin{equation}\label{eq:split}
+R_{\pm}S_{\pm}=-\frac12\pm D,\qquad D=\frac{(3-\SW)\,\nu}{2}-\frac1\nu .
+\end{equation}
+Consequently, for every level function,
+\begin{equation}\label{eq:sum}
+R_{+}S_{+}+R_{-}S_{-}=-1 .
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The family \eqref{eq:family} is \eqref{eq:class} with $s_{\pm}=2\pi(1\pm\nu)$ and $\nu=\sqrt{1-j^{2}}$. For the upper sign,
+\[
+s'=-\frac{2\pi j}{\nu},\qquad s''=-\frac{2\pi}{\nu^{3}},\qquad s'''=-\frac{6\pi j}{\nu^{5}},\qquad \alpha=\frac{2\pi(1+\nu)}{\nu} .
+\]
+Hence $s/(2\alpha)=\nu/2$, $js'''/s''=3(1-\nu^{2})/\nu^{2}$ and $j^{2}s''/\alpha=-(1-\nu)/\nu^{2}$, and \eqref{eq:RS} gives
+\begin{equation}\label{eq:f}
+R_{+}S_{+}=-\frac\nu2\left[\SW+\frac{2+\nu-3\nu^{2}}{\nu^{2}}\right]=f(\nu),
+\qquad
+f(x)=-\frac12-\frac1x+\frac{(3-\SW)\,x}{2} .
+\end{equation}
+The lower sign is obtained by replacing $\nu$ by $-\nu$ in all these expressions, so that $R_{-}S_{-}=f(-\nu)$. The sum is twice the even part of $f$, which is the constant $-\tfrac12$, and $D$ is its odd part.
+\end{proof}
+
+The exchange of the two horizons is the involution $\nu\to-\nu$ of the double cover \eqref{eq:family}. Equation \eqref{eq:sum} states that the part of $RS$ which is even under this involution does not depend on the level function or on the state. The odd part carries $\SW$ and diverges in the extremal limit $\nu\to0$.
+
+\begin{corollary}\label{cor:cross}
+For the family \eqref{eq:family},
+\begin{equation}\label{eq:cross}
+R_{+}S_{-}+R_{-}S_{+}=3+\frac{2\,(\SW-2)\,\nu^{2}}{1-\nu^{2}} .
+\end{equation}
+The cross sum equals $3$ identically if and only if $\SW=2$, that is, by Lemma~\ref{lem:sigma}, if and only if the level function is a power law or an exponential.
+\end{corollary}
+
+\begin{proof}
+$S_{\mp}/S_{\pm}=(1\mp\nu)/(1\pm\nu)$, and \eqref{eq:split}.
+\end{proof}
+
+\paragraph{Kerr.} Here $\SW=2$ and \eqref{eq:split} is equivalent to
+\begin{equation}\label{eq:kerr}
+R_{\pm}=\frac{1}{4\pi M^{2}}\mp\frac{1}{2\pi\sqrt{M^{4}-J^{2}}} .
+\end{equation}
+In \cite{ABP15} the entropy and the curvature scalar are written in coordinates that cover both horizons, their equations (35) and (37). In our notation they give $RS=f(\cos2\beta)$ with $\SW=2$, the outer horizon being $\cos2\beta=\nu$ and the inner one $\cos2\beta=-\nu$. For Kerr, relations \eqref{eq:kerrpair} thus follow in one line from \cite{ABP15}, where the two branches are not combined.
+
+\paragraph{Myers Perry in five dimensions with equal spins.} The level function is a power law, so $\SW=2$ and both branch values are the Kerr ones as functions of $\nu$. In the normalization of \cite{BMMA}, where $S_{+}S_{-}=4J^{2}$, one has $\nu=(S^{2}-4J^{2})/(S^{2}+4J^{2})$ on the outer branch, and \eqref{eq:split} becomes
+\[
+R=-\frac{S\,(S^{2}+12J^{2})}{S^{4}-16J^{4}} ,
+\]
+which is the Ruppeiner curvature given in Section III.2 of \cite{BMMA}. Equal angular momenta in any dimension are studied in \cite{AP13}.
+
+\paragraph{Kerr Sen at fixed charge.} With $W=M^{2}-Q^{2}/2$ and $q=Q/M$,
+\begin{equation}\label{eq:kerrsen}
+\SW=\frac{2}{1-q^{2}/2},\qquad
+D=\frac{(2-3q^{2})\,\nu}{2\,(2-q^{2})}-\frac1\nu,\qquad
+R_{+}S_{-}+R_{-}S_{+}=3+\frac{4q^{2}\nu^{2}}{(2-q^{2})(1-\nu^{2})} .
+\end{equation}
+The sum \eqref{eq:sum} holds for every value of the charge, while the split and the cross sum depend on it. This example lies outside the class of \cite{ABP06}, because its level function is not a power law.
+
+\section{The single branch companion}\label{sec:odd}
+
+\begin{proposition}\label{prop:odd}
+Let $S=c\,\sqrt{W(M)^{2}-J^{2}}$ with a constant $c>0$. Then
+\begin{equation}\label{eq:odd}
+R\,S=-\frac{\SW}{2}-\Bigl(1-\frac{\SW}{2}\Bigr)\frac{J^{2}}{W^{2}} .
+\end{equation}
+In particular $RS=-1$ identically if and only if $\SW=2$.
+\end{proposition}
+
+\begin{proof}
+This is \eqref{eq:class} with $s=c\,\nu$, $\nu=\sqrt{1-j^{2}}$, for which $s'=-cj/\nu$, $s''=-c/\nu^{3}$, $s'''=-3cj/\nu^{5}$ and $\alpha=c/\nu$. Equation \eqref{eq:RS} gives $RS=-\tfrac{\nu^{2}}{2}\bigl[\SW+2j^{2}/\nu^{2}\bigr]$.
+\end{proof}
+
+Example (d) with $d=5$ is of this form, with a power law level function, and \eqref{eq:odd} is then $R=-1/S$: this is equation (51) of \cite{AP06}. For a family \eqref{eq:family} one has $4\pi\sqrt{W^{2}-J^{2}}=S_{+}-S_{-}$. The number $-1$ therefore appears in two places: on the single horizon of five dimensional Kerr with one spin \cite{AP06}, and as the sum over the two horizons of a family \eqref{eq:family}. Both are consequences of Proposition~\ref{prop:curv}. We do not know of a deeper reason that would relate the two.
+
+\section{The exact converse}\label{sec:converse}
+
+\begin{theorem}\label{thm:converse}
+Let $k$ be a smooth positive function on an interval, with $k'\neq0$, and for a level function $W$ with $W'W''\neq0$ consider
+\begin{equation}\label{eq:kclass}
+S_{\pm}=2\pi\Bigl(W(M)\pm\sqrt{W(M)^{2}-k(J)}\Bigr),\qquad W^{2}>k ,
+\end{equation}
+so that $S_{+}+S_{-}=4\pi W(M)$ and $S_{+}S_{-}=4\pi^{2}k(J)$. The identity $R_{+}S_{+}+R_{-}S_{-}=-1$ holds for every level function $W$ if and only if $\sqrt k$ is affine:
+\begin{equation}\label{eq:affine}
+k(J)=(aJ+b)^{2} .
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If \eqref{eq:affine} holds, the affine change of coordinate $\hat J=aJ+b$ maps \eqref{eq:kclass} to \eqref{eq:family}. By the first invariance of Section~\ref{sec:setting}, $R$ and $S$ are unchanged, and Theorem~\ref{thm:mirror} applies.
+
+Conversely, put $\rho=\sqrt{W^{2}-k}$ and $X=2kk''-k'^{2}$. A direct computation, described in Appendix~\ref{app:converse}, gives
+\begin{equation}\label{eq:NDelta}
+R_{+}S_{+}+R_{-}S_{-}+1=\frac{N}{A_{+}^{2}A_{-}^{2}},
+\qquad
+A_{\pm}=(k'^{2}+2k''\rho^{2})\,(W\pm\rho)\,W''-X\,W'^{2} ,
+\end{equation}
+where $N$ is even in $\rho$ and, after the substitution $\rho^{2}=W^{2}-k$, is a polynomial in $W$, $W'$, $W''$, $W'''$ whose coefficients are polynomials in $k$, $k'$, $k''$, $k'''$. It has $25$ terms, and the coefficient of the monomial $W''^{4}$ is $k^{2}X^{4}$. At a given state the admissible values of $(W,W',W'',W''')$ form an open subset of $\mathbb{R}^{4}$, defined by $W^{2}>k$ and $W'W''\neq0$, and a level function can be chosen with any of these values. If the identity holds for every level function, the polynomial $N$ vanishes on an open set, hence identically, and in particular $k^{2}X^{4}=0$. Since $k>0$, this gives $X=0$ at every point of the interval. Finally $X=4k^{3/2}\,(\sqrt k)''$, so $\sqrt k$ is affine.
+\end{proof}
+
+\begin{remark}\label{rem:limit}
+The obstruction $X$ can be made explicit. The terms of $N$ of highest degree in $W''$ add up to $kX\,(X-2k''W^{2})^{3}\,(k-W^{2})\,W''^{4}$, so that, at fixed $W$, $W'$ and $W'''$,
+\begin{equation}\label{eq:limit}
+R_{+}S_{+}+R_{-}S_{-}\;\longrightarrow\;-1+\frac{X\,\rho^{2}}{k\,(k'^{2}+2k''\rho^{2})}
+\qquad\text{as } W''\to\infty .
+\end{equation}
+For $k=J^{2}+C$ the limit is $-1+C\rho^{2}/\bigl((J^{2}+C)(W^{2}-C)\bigr)$.
+\end{remark}
+
+In the class \eqref{eq:kclass} the entropy product does not depend on the mass, by construction. Mass independence of the product, which holds for a wide range of black holes \cite{CGP}, is therefore not sufficient for \eqref{eq:sum}. What \eqref{eq:sum} requires is that the product be the square of an affine function of the fluctuating charge.
+
+\begin{corollary}[Kerr Newman at fixed charge]\label{cor:kn}
+For the Kerr Newman black hole at fixed charge $Q$,
+\[
+S_{\pm}=2\pi\Bigl(W\pm\sqrt{W^{2}-J^{2}-Q^{4}/4}\Bigr),\qquad W=M^{2}-\frac{Q^{2}}{2},
+\]
+which is of the form \eqref{eq:kclass} with $k=J^{2}+Q^{4}/4$ and $2kk''-k'^{2}=Q^{4}$. The product $S_{+}S_{-}=\pi^{2}(4J^{2}+Q^{4})$ does not depend on the mass, and at fixed $J\neq0$
+\begin{equation}\label{eq:kn}
+R_{+}S_{+}+R_{-}S_{-}=-1+\frac{Q^{4}\,(3M^{4}-J^{2})}{4M^{4}J^{2}}+O(Q^{6}) .
+\end{equation}
+At $(M,J,Q)=(1,\tfrac12,\tfrac15)$ the sum is $-0.9950920929\ldots$
+More generally, for $k=J^{2}+C$ with a constant $C$ and any level function,
+\begin{equation}\label{eq:firstorder}
+R_{+}S_{+}+R_{-}S_{-}=-1+\frac{C}{J^{2}}\Bigl[\nu^{2}\,(1+2AB+4A^{2})+A\,(1-8\nu^{2})\Bigr]+O(C^{2}),
+\end{equation}
+with $A=W'^{2}/(WW'')$, $B=W'W'''/W''^{2}$ and $\nu=\sqrt{1-J^{2}/W^{2}}$.
+\end{corollary}
+
+\begin{proof}
+The Kerr Newman entropies are $\pi(r_{\pm}^{2}+a^{2})$ with $r_{\pm}=M\pm\sqrt{M^{2}-a^{2}-Q^{2}}$ and $a=J/M$, which is the stated form. Equation \eqref{eq:firstorder} is the first order term in $C$ of the exact expression of the sum, and \eqref{eq:kn} is its value for $W=M^{2}-Q^{2}/2$ and $C=Q^{4}/4$, where $A=2+O(Q^{2})$ and $B=0$.
+\end{proof}
+
+\section{Discussion}\label{sec:disc}
+
+The relations \eqref{eq:kerrpair} of the Kerr black hole have a simple origin. The entropies of the two horizons are the two branches of one function of the form $W\,s(J/W)$, exchanged by an involution, and the curvature formula \eqref{eq:RS} depends on the level function through a single number. The sum over the two branches is blind to that number, and the cross sum is not. The converse shows that the sum rule is tied to this precise form: it is lost as soon as the entropy product, though still independent of the mass, is not the square of an affine function of the fluctuating charge.
+
+Several limits should be kept in mind. First, the results depend on the frame: they hold for the Hessian in $(M,J)$ at fixed values of all other parameters. Other two dimensional frames, such as mass and electric charge at fixed angular momentum, and the geometry with three fluctuating charges, are not covered. Second, the inner horizon enters only through its formal entropy, and nothing is claimed about its physical status as a thermodynamic system. Third, with a cosmological constant the entropies are not of the form \eqref{eq:class} in $(M,J)$, and we make no statement about that case. Fourth, we have no physical interpretation of the value $-1$, nor of its appearance both in \eqref{eq:sum} and on the single horizon of five dimensional Kerr.
+
+Two questions seem natural. Is there a geometric reason for \eqref{eq:sum} in the picture of \cite{ABP06,ABP15}, where the state space is a wedge in a flat space and the Ruppeiner metric is conformal to the flat one? And is there an analogue of Theorem~\ref{thm:mirror} for three fluctuating charges, where the Kerr Newman family would be the first test?
+
+\section*{Statement on the use of an AI assistant}
+
+The author had no human collaborator. The work was done in sessions with an AI assistant (Claude, Anthropic), which took part in every stage: the derivations, the literature search and the drafting of the text. No computed result rests on the assistant's word: each one is stated as an exact symbolic identity or as a numerical statement at stated precision, and is replayed by the script described below, which the author has run. The author takes full responsibility for the content.
+
+\section*{Code and data availability}
+
+The script \texttt{replay\_short\_article.py} checks every statement listed in Appendix~\ref{app:replay}. It uses Python with \texttt{sympy} and \texttt{mpmath} only and runs in less than a minute. It includes a check of our transcription of equations (17) and (18) of \cite{ABP06} against a direct computation, for general exponents. The script is archived with this article on Zenodo and in the repository \texttt{github.com/vaneeckhoutnicolas/mirror-bh-thermodynamics}. The identifier 10.5281/zenodo.24139477 designates the Zenodo record as a whole and resolves to its latest version. That record also holds an earlier and longer version of this work (July 2026), which is superseded; its known errors are listed in the file \texttt{ERRATA.md} of the record.
+
+\appendix
+\section{Replay table}\label{app:replay}
+
+Each line gives a check tag of \texttt{replay\_short\_article.py} and the statement it covers.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Tag & Statement \\
+\midrule
+A1 & first derivatives \eqref{eq:first} \\
+A2, A3 & Proposition~\ref{prop:diag}: \eqref{eq:diag} and \eqref{eq:det} \\
+A4 & Proposition~\ref{prop:curv}: \eqref{eq:RS}, by direct computation of the Hessian curvature \\
+A5 & the same through \eqref{eq:gauss} \\
+A6 & the form \eqref{eq:sigmaform} \\
+B1, B2 & Lemma~\ref{lem:sigma} \\
+B3, C6 & Kerr Sen: \eqref{eq:kerrsen} \\
+C0 to C2 & Theorem~\ref{thm:mirror}: \eqref{eq:split}, \eqref{eq:sum}, \eqref{eq:f} \\
+C3 & Corollary~\ref{cor:cross}: \eqref{eq:cross} \\
+C4 & Kerr: \eqref{eq:kerr} \\
+C5 & Remark~\ref{rem:prior} (iii) \\
+D1 & Theorem~\ref{thm:mirror} again, by a route that does not use Propositions~\ref{prop:diag} and \ref{prop:curv} \\
+D2 to D6 & Theorem~\ref{thm:converse}, the limit \eqref{eq:limit} and Appendix~\ref{app:converse} \\
+E1 to E5 & Corollary~\ref{cor:kn}: \eqref{eq:kn}, \eqref{eq:firstorder} and the numerical value \\
+F1 & Remark~\ref{rem:prior} (i): equation (29) of \cite{ABP15} \\
+F2 & equations (35) and (37) of \cite{ABP15}, and \eqref{eq:kerrpair} \\
+F3, F4 & example (c) and the curvature of \cite{BMMA} \\
+F5 & Remark~\ref{rem:ap50}: equations (50) and (51) of \cite{AP06} \\
+F6 & Proposition~\ref{prop:odd}: \eqref{eq:odd} \\
+F7 & Remark~\ref{rem:abp}: equation (17) of \cite{ABP06} at $a+b=0$ \\
+F8 & equations (17) and (18) of \cite{ABP06} for general exponents, and the sign convention \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The computation behind Theorem~\ref{thm:converse}}\label{app:converse}
+
+The entropies \eqref{eq:kclass} are $S_{\pm}=2\pi(W\pm\rho)$ with $\rho^{2}=W^{2}-k$, so that
+\[
+\frac{\partial\rho}{\partial M}=\frac{WW'}{\rho},\qquad \frac{\partial\rho}{\partial J}=-\frac{k'}{2\rho} .
+\]
+With these two rules every derivative of $S_{\pm}$ is a rational function of $\rho$, of $W$, $W'$, $W''$, $W'''$ and of $k'$, $k''$, $k'''$. The scalar curvature of the metric \eqref{eq:rup} is computed from the derivatives of $S$ up to third order, and the lower sign is obtained from the upper one by $\rho\to-\rho$. The result is \eqref{eq:NDelta}.
+
+The numerator $N$ is even in $\rho$. After the substitution $\rho^{2}=W^{2}-k$ it is a polynomial in $(W,W',W'',W''')$ with $25$ terms, of degree four in $W''$ and of degree one in $W'''$. Three facts about it are used or recorded.
+\begin{enumerate}
+\item The coefficient of the monomial $W''^{4}$ is $k^{2}X^{4}$. This is the only fact used in the proof of Theorem~\ref{thm:converse}.
+\item The terms of degree four in $W''$ add up to $kX\,(X-2k''W^{2})^{3}\,(k-W^{2})\,W''^{4}$, and the coefficient of $W''^{4}$ in $A_{+}^{2}A_{-}^{2}$ is $k^{2}\,(2k''W^{2}-X)^{4}$. Their quotient is the limit \eqref{eq:limit}.
+\item As a cross check, the $25$ coefficients generate an ideal of $\mathbb{Q}[k,k',k'',k''']$ whose reduced Gr\"obner basis, for the lexicographic order $k'''>k''>k'>k$, is
+\begin{gather*}
+k^{2}k'k''^{2}k''',\qquad k\,k'^{3}k''k''',\qquad k'^{5}k''',\qquad k''^{2}\,X\,(2kk''+k'^{2}),\\
+k'^{2}k''^{2}\,X,\qquad k'^{4}k''\,X,\qquad k'^{6}\,X .
+\end{gather*}
+For $k'\neq0$ its zero set is $k'''=0$ and $X=0$. No further condition is hidden in the other coefficients, since $X=0$ on an interval implies $k'''=0$.
+\end{enumerate}
+These statements are replayed by checks D2 to D6. Run with the argument \texttt{coefficients}, the script also prints the $25$ coefficients.
+
+\begin{thebibliography}{99}
+
+\bibitem{Rup} G.~Ruppeiner, Rev.\ Mod.\ Phys.\ 67 (1995) 605; erratum 68 (1996) 313.
+
+\bibitem{AP06} J.~E.~{\AA}man and N.~Pidokrajt, Phys.\ Rev.\ D 73 (2006) 024017, arXiv:hep-th/0510139.
+
+\bibitem{ABP06} J.~E.~{\AA}man, I.~Bengtsson and N.~Pidokrajt, Gen.\ Rel.\ Grav.\ 38 (2006) 1305, arXiv:gr-qc/0601119.
+
+\bibitem{ABP15} J.~E.~{\AA}man, I.~Bengtsson and N.~Pidokrajt, Entropy 17 (2015) 6503, doi:10.3390/e17096503, arXiv:1507.06097.
+
+\bibitem{Curir} A.~Curir, Nuovo Cimento B 51 (1979) 262.
+
+\bibitem{OK} I.~Okamoto and O.~Kaburaki, Mon.\ Not.\ R.\ Astron.\ Soc.\ 255 (1992) 539.
+
+\bibitem{AH} M.~Ansorg and J.~Hennig, Phys.\ Rev.\ Lett.\ 102 (2009) 221102.
+
+\bibitem{CGP} M.~Cveti\v{c}, G.~W.~Gibbons and C.~N.~Pope, Phys.\ Rev.\ Lett.\ 106 (2011) 121301.
+
+\bibitem{CR} A.~Castro and M.~J.~Rodriguez, Phys.\ Rev.\ D 86 (2012) 024008.
+
+\bibitem{CLZ} B.~Chen, S.~X.~Liu and J.~J.~Zhang, JHEP 11 (2012) 017.
+
+\bibitem{ABJK} G.~Ahn, I.~Bae, G.~Jang and Y.~Kwon, arXiv:2605.08235.
+
+\bibitem{HS} A.~Hankey and H.~E.~Stanley, Phys.\ Rev.\ B 6 (1972) 3515.
+
+\bibitem{Que} H.~Quevedo, M.~N.~Quevedo and A.~S\'anchez, arXiv:1812.10599.
+
+\bibitem{Sen} A.~Sen, Phys.\ Rev.\ Lett.\ 69 (1992) 1006.
+
+\bibitem{Pra} P.~Pradhan, Eur.\ Phys.\ J.\ C 76 (2016) 131; erratum 81 (2021) 896; arXiv:1503.04514.
+
+\bibitem{MP} R.~C.~Myers and M.~J.~Perry, Ann.\ Phys.\ 172 (1986) 304.
+
+\bibitem{BMMA} A.~Bravetti, D.~Momeni, R.~Myrzakulov and A.~Altaibayeva, Adv.\ High Energy Phys.\ 2013 (2013) 549808, arXiv:1303.2077.
+
+\bibitem{AP13} J.~E.~{\AA}man and N.~Pidokrajt, Eur.\ Phys.\ J.\ C 73 (2013) 2601, arXiv:1004.5550.
+
+\end{thebibliography}
+
+\end{document}

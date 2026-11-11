@@ -1,6 +1,6 @@
 # Novelty search log
 
-> **Record of July 2026, not updated.** This log documents the novelty review made for version 1 of the manuscript. Several of its conclusions are superseded by `../ERRATA.md`: claim C1 as worded (the equivalence) is withdrawn (E1); the attribution of the closure identity in C6 is corrected (E3); the wording of C3 is withdrawn (E4); the author names of Q10 and A6 are corrected (E6); the position of C1, C4 and C8 with respect to earlier work is restated (E7). The entries below are left as they were written, including the status board. Note added on 2026-11-11.
+> **Record of July 2026, not updated.** This log documents the novelty review made for version 1 of the manuscript. Several of its conclusions are superseded by `../../../ERRATA.md`: claim C1 as worded (the equivalence) is withdrawn (E1); the attribution of the closure identity in C6 is corrected (E3); the wording of C3 is withdrawn (E4); the author names of Q10 and A6 are corrected (E6); the position of C1, C4 and C8 with respect to earlier work is restated (E7). The entries below are left as they were written, including the status board. Note added on 2026-11-11.
 
 Companion diligence document for the white paper (mirror-constrained black hole thermodynamics). Purpose: document the methodology, every query run, the nearest prior work found for each claim, and the precise distance between that work and the claim. This log is evidence of due diligence and feeds the related-work section.
 

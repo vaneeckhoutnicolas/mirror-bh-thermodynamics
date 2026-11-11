@@ -1,27 +1,23 @@
-# Computation scripts
+# Replay script of the article
 
-A run of all scripts from a clean clone, with durations and what each one prints, is recorded in `RUN-LOG-2026-11-11.md`.
+`replay_short_article.py` checks every numbered statement of the article in `../paper/`. It imports nothing from this repository. Dependencies: Python 3, sympy, mpmath.
 
-Dependencies: Python 3, sympy, mpmath. Convention throughout: Ruppeiner metric g = -Hess S, calibrated so the Kerr diagonal invariant equals -1 (kerr_calib.py).
+    pip install sympy mpmath
+    python3 replay_short_article.py
 
-Core library:
-- series_lib.py : exact truncated Laurent series over the Gaussian rationals (add, mul, inverse, powers), expression evaluator, Newton root refinement, Brioschi curvature for Hessian metrics.
-- impl2.py : implicit partial derivatives of a branch r(u,v) of P(r,u,v) = 0 to third order, with corruption-safe substitution ordering.
+Each check prints its tag, the statement it covers, and `ok` or `FAILED`. The last line must read `36 checks, 0 failed`. The run takes less than a minute. Tested with Python 3.12 and 3.13, sympy 1.14.0 and mpmath 1.3.0.
 
-Symbolic theorems:
-- run_rn_analytic.py : per-sheet charge -27/16 at rational points (RN-AdS).
-- run_rn_generic.py : the same for generic symbolic Q (closed-form theorem).
-- run_kn_analytic.py / run_kn_electric.py / run_kn_generic.py : Kerr-Newman-AdS charges, deformation polynomial, electric-frame rigidity.
-- generalW.py / generalW2.py : the general deck-symmetric W-family theorem (sum = -1, split D, power-law criterion).
-- kerr_individual.py : closed-form Kerr branch products (nu-map).
-- kerrsen_symbolic.py : Kerr-Sen split attempt (heavy; the W-family theorem supersedes it).
+The tags are those of Appendix A of the article:
 
-Numerics and cross-validation:
-- kerr_calib.py, rn_flat.py : calibration and RN flatness.
-- rnads.py, asympt.py, kerr_ads.py, kn_ads.py, crosscheck.py : numerical discovery pipeline (branch tracking, Richardson extrapolation, deformation scan, predictive test).
-- kn_universal.py, kn_universal_num.py : nu-map universality tests.
-- mp5d_check.py : Myers-Perry 5D vs Bravetti, Momeni, Myrzakulov and Altaibayeva (arXiv:1303.2077), 40 digits.
-- kerrsen_numap.py : Kerr-Sen sum reconfirmation and nu-map counterexample.
-- abp_check.py : both Kerr branches vs Aman-Bengtsson-Pidokrajt eq. (37).
-- monodromy.py : exponent closure and flat-limit -2 M omega split.
-- analytic_rn.py : first (slow) symbolic attempt, kept for provenance.
+- A: the class S = W(M) s(J/W(M)), the diagonal form and the curvature formula.
+- B: the combination Sigma_W.
+- C: the two branch family, the cross sum, Kerr and Kerr Sen.
+- D: the same theorem by an independent route, and the converse.
+- E: Kerr Newman at fixed charge.
+- F: published closed forms used for comparison.
+
+With the argument `coefficients` the script also prints the 25 coefficients described in Appendix B of the article:
+
+    python3 replay_short_article.py coefficients
+
+The scripts of version 1 are in `../archive/version-1/code/`, with a run log.

@@ -3,10 +3,18 @@
 **Nicolas Van Eeckhout**
 Independent researcher, Brussels, Belgium.
 ORCID: [0000-0002-5256-3185](https://orcid.org/0000-0002-5256-3185)
-Sole author of the manuscript, the ancillary file, the novelty review, and the computation code.
+Sole author of the article, of its replay script, and of the archived version 1.
 
-## Acknowledgements
+## Method and use of an AI assistant
 
-The manuscript is a companion to Ahn, Bae, Jang, Kwon, arXiv:2605.08235, and builds on the literature fully attributed in Section 14 of the paper and in `review/novelty-search-log.md` (notably Cvetic-Gibbons-Pope, Zhang-Gao, Wang-Xu-Meng, Aman-Bengtsson-Pidokrajt, Pradhan, Bravetti and coauthors (arXiv:1303.2077), and the isomonodromy school of Carneiro da Cunha).
+The author had no human collaborator. The work was done in sessions with an AI assistant (Claude, Anthropic), which took part in every stage: the derivations, the literature search and the drafting of the text.
 
-Method and use of an AI assistant. The author worked alone, in sessions with an AI assistant (Claude, Anthropic). The distinctive feature of the approach is verification by replay: no computed result rests on the assistant's word. Each one is stated as an exact symbolic identity or as a numerical statement at forty digits, comes with a script that reproduces it (`code/`, sympy and mpmath only), and is checked against published closed forms where they exist; the core results were also recomputed from scratch with new code on 2026-11-11. The assistant took part in every stage of the work, including the derivations, the literature search and the drafting of the text. The author takes full responsibility for the content.
+The distinctive feature of the approach is verification by replay: no computed result rests on the assistant's word. Each statement of the article is an exact symbolic identity or a numerical statement at stated precision, and one script replays them all (`code/replay_short_article.py`, sympy and mpmath only). The published formulas used for comparison are checked in the same script. The author has run the script and takes full responsibility for the content.
+
+## Earlier work
+
+The article extends results of Åman and Pidokrajt (2006) and of Åman, Bengtsson and Pidokrajt (2006, 2015). Its introduction says what is taken from them, and its reference list is complete.
+
+## Version 1
+
+Version 1 (July 2026) was produced in the same way. Its own acknowledgements and reference list are in the manuscript kept in `archive/version-1/paper/`, and its known errors are listed in `ERRATA.md`.

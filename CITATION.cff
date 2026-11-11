@@ -1,6 +1,7 @@
 cff-version: 1.2.0
-message: "Please cite the latest version of the Zenodo record, https://doi.org/10.5281/zenodo.24139477. Known errors of earlier versions are listed in ERRATA.md."
-title: "Mirror-Constrained Black Hole Thermodynamics: A Two-Horizon Companion"
+message: "Please cite the latest version of the Zenodo record, https://doi.org/10.5281/zenodo.24139477. Version 1 is superseded; its known errors are listed in ERRATA.md."
+title: "Two horizon Ruppeiner geometry of level homogeneous black hole entropies (article and replay script)"
+abstract: "A short article and the script that replays each of its statements. For entropies of the form S = W(M) s(J/W(M)), with an arbitrary level function W, the Ruppeiner metric is diagonal in the coordinates (M, J/W) and the product of scalar curvature and entropy depends on W through one scale invariant combination only. For the two branch family S = 2 pi (W +/- sqrt(W^2 - J^2)) the sum of R S over the two horizons equals -1 for every level function, and an exact converse characterizes the entropy products for which this holds. The record also contains version 1 of this work (July 2026), which is superseded, with its errata."
 authors:
   - family-names: "Van Eeckhout"
     given-names: "Nicolas"
@@ -12,7 +13,8 @@ license: MIT
 keywords:
   - black hole thermodynamics
   - Ruppeiner geometry
+  - thermodynamic geometry
   - entropy product
   - inner horizon
-  - virtual horizons
+  - Kerr black hole
   - general relativity

@@ -1,49 +1,56 @@
-# Mirror-Constrained Black Hole Thermodynamics
+# Two horizon Ruppeiner geometry of level homogeneous black hole entropies
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24139477.svg)](https://doi.org/10.5281/zenodo.24139477)
 
-Companion research to Ahn, Bae, Jang, Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235.
+**Author:** N. Van Eeckhout, independent researcher, Brussels. ORCID [0000-0002-5256-3185](https://orcid.org/0000-0002-5256-3185).
 
-**Author:** N. Van Eeckhout, independent researcher, Brussels.
+**Status (November 2026):** version 2 is a short article of eleven pages, in `paper/`. It is a preprint and has not been peer reviewed. One script, `code/replay_short_article.py`, replays every statement of the article. Version 1 (July 2026, *Mirror-Constrained Black Hole Thermodynamics*, 31 pages) is superseded: it is kept unchanged in `archive/version-1/`, and its known errors are listed in [ERRATA.md](ERRATA.md). Please do not cite version 1.
 
-**Status (2026-11-11):** the manuscript in `paper/` is version 1 (July 2026). It is superseded and kept for the record: a critical recomputation (carried out with an AI assistant, with new code) confirmed the computations it reran and found errors of statement and of attribution, listed in [ERRATA.md](ERRATA.md). A shorter revised article is in preparation. Not submitted. Please do not cite version 1.
+**Archive:** Zenodo, DOI [10.5281/zenodo.24139477](https://doi.org/10.5281/zenodo.24139477). This identifier covers all versions and always resolves to the latest one.
 
-**Archive:** Zenodo, DOI [10.5281/zenodo.24139477](https://doi.org/10.5281/zenodo.24139477) (all versions; it always resolves to the latest one). The snapshot of 2026-11-11 is version `v0.3-errata`, DOI 10.5281/zenodo.24139478. Items E6 and E7 of the errata were added after that snapshot.
+## What the article shows
 
-## Core results
+The Ruppeiner metric is the negative Hessian of the entropy S in the conserved charges (M, J), and R is its scalar curvature.
 
-1. **The diagonal invariant on the mirror family.** For the two-horizon Ruppeiner geometries of the branched double cover, the diagonal contraction R+S+ + R-S- equals -1 identically on the entire deck-symmetric family S(+/-) = 2 pi (W(M) +/- sqrt(W^2 - J^2)) with arbitrary W(M), with the branch split in closed form: D = (3 - Sigma_W) nu / 2 - 1/nu, Sigma_W = W'W'''/W''^2 + W'^2/(W W''). Sigma_W = 2 for every power law; Kerr-Sen deviates as the scale anomaly of its shifted level coordinate. Correction: version 1 also states that the integer holds exactly when the entropy product is mass-independent. That is not true in general (Kerr-Newman keeps a mass-independent product and breaks the integer, equation 7.17); see ERRATA.md, E1. For Kerr the values on each horizon follow from the curvature published by Aman, Bengtsson and Pidokrajt in 2015; see ERRATA.md, E7.
+1. **A diagonal form.** For entropies of the form S = W(M) s(J/W(M)), with W an arbitrary function (the level function), the metric is diagonal in the coordinates (M, j = J/W): ds^2 = - W''(M) (s - j s') dM^2 - W(M) s''(j) dj^2.
 
-2. **Flat limit values on the virtual sheets.** Ruppeiner geometry extended to the complex roots of the AdS horizon quartic. On each virtual sheet the product R S has an exact rational flat limit: -27/16 in the electric fluctuation frame (unchanged by background rotation, shown symbolically for generic charge) and -25/16 + 5q^2/32 + q^4/32 in the angular frame, where the sum over the two sheets factorizes as (q^2 + 10)(q^2 - 5)/16. These values are correct and their origin is elementary. Version 1 calls them quantized curvature charges, which claims too much (ERRATA.md, E4).
+2. **A curvature formula.** R S = -(s/(2a)) [Sigma_W + j s'''/s'' + j^2 s''/a] with a = s - j s'. The level function enters only through Sigma_W = W'W'''/W''^2 + W'^2/(W W''), which equals 2 exactly for power laws and exponentials.
 
-3. **The identity of the virtual sheets.** The monodromy exponents of the radial wave equation close over the complete root set (equivalent, via the Zhang-Gao criterion, to the entropy-sum universality of Wang-Xu-Meng), and in the flat limit the virtual pair carries exactly -2 M omega, the Stokes content of the flat-space irregular singularity. The virtual horizons are the AdS unfolding of that singularity. The closure identity has earlier sources than those cited in version 1 (ERRATA.md, E3).
+3. **Two horizons.** For S(+/-) = 2 pi (W +/- sqrt(W^2 - J^2)), with nu = (S+ - S-)/(S+ + S-): R(+/-) S(+/-) = -1/2 +/- [(3 - Sigma_W) nu/2 - 1/nu]. Hence R+S+ + R-S- = -1 for every level function, while R+S- + R-S+ = 3 holds only if Sigma_W = 2. Examples: Kerr, Kerr Sen at fixed charge, five dimensional Myers Perry with equal spins.
 
-4. **Context beta.** The gap between physical-subset and complete-root-set invariants behaves as an omitted regression variable: apparent volatility of thermodynamic invariants is deterministic context, R^2 = 1 under full accounting.
+4. **An exact converse.** Among entropies with S+ + S- = 4 pi W(M) and S+ S- = 4 pi^2 k(J), the sum equals -1 for every W if and only if k is the square of an affine function. A mass independent entropy product is therefore not sufficient: for Kerr Newman at fixed charge the sum is -1 + Q^4 (3 M^4 - J^2)/(4 M^4 J^2) + O(Q^6).
 
-All numerical claims are exact (Gaussian-rational Laurent-series arithmetic) or verified to forty digits, cross-validated against published closed forms (Aman, Bengtsson and Pidokrajt 2015; Bravetti, Momeni, Myrzakulov and Altaibayeva 2013; version 1 names other authors for the second one, see ERRATA.md, E6).
+5. **A single horizon companion.** For S proportional to sqrt(W^2 - J^2), R S = -Sigma_W/2 - (1 - Sigma_W/2) J^2/W^2. With a power law W this is R S = -1, the value published in 2006 for the five dimensional Kerr black hole with one angular momentum.
+
+## What is taken from earlier work
+
+- The Ruppeiner metric of Kerr on both horizons, in diagonal form, and its curvature: Aman, Bengtsson and Pidokrajt (2015). For Kerr, the two relations of item 3 follow in one line from their formulas, where the two horizons are not combined.
+- The coordinate J/S, the conformal relation with the Weinhold metric, and the curvature of Kerr in any dimension: Aman and Pidokrajt (2006).
+- The curvature of quasi homogeneous potentials, which contains item 2 for power law level functions: Aman, Bengtsson and Pidokrajt (2006).
+- The curvature of five dimensional Myers Perry with equal spins: Bravetti, Momeni, Myrzakulov and Altaibayeva (2013).
+
+What the article adds is the arbitrary level function, the statements on the pair of horizons, and the converse. Full references are in the article.
+
+## Checking the article
+
+    pip install sympy mpmath
+    python3 code/replay_short_article.py
+
+The last line must read `36 checks, 0 failed`. The run takes less than a minute. The tags printed by the script are those of Appendix A of the article. See `code/README.md`.
+
+## Method
+
+The author had no human collaborator. The work was done in sessions with an AI assistant (Claude, Anthropic), which took part in every stage: the derivations, the literature search and the drafting of the text. No computed result rests on the assistant's word: each one is an exact symbolic identity or a numerical statement at stated precision, replayed by the script above. See `AUTHORS.md`.
 
 ## Repository layout
 
-- `ERRATA.md` : known errors of version 1 and their corrections.
-- `paper/` : the manuscript (markdown source of record, LaTeX, compiled PDF, 31 pages).
-- `ancillary/` : the ancillary file, 21 sections of explicit expressions, protocols and exact tables (intended for the arXiv `anc/` folder).
-- `code/` : Python scripts reproducing every computation (sympy + mpmath, no other dependencies). See `code/README.md`. A run of all scripts from a clean clone is recorded in `code/RUN-LOG-2026-11-11.md`.
-- `review/` : records of July 2026, not updated: the novelty review made for version 1 (16 logged searches, full-text readings, 10 attribution corrections, precaution notes) and the integration checklist of that time. Where they differ from `ERRATA.md`, the errata prevail.
-- `archive/` : working drafts of the new sections, kept for provenance.
-
-## Reproducing the computations
-
-    pip install sympy mpmath
-    cd code
-    python3 kerr_calib.py        # sign convention: Kerr diagonal = -1
-    python3 run_rn_generic.py    # symbolic proof: -27/16 per virtual sheet
-    python3 run_kn_generic.py    # symbolic deformation polynomial
-    python3 generalW2.py         # general W-family theorem
-    python3 mp5d_check.py        # 40-digit cross-validation vs Bravetti et al.
-    python3 abp_check.py         # cross-validation vs Aman-Bengtsson-Pidokrajt
-    python3 monodromy.py         # monodromy closure and flat-limit split
+- `paper/` : the article (LaTeX source, PDF, and a markdown rendering).
+- `code/` : the replay script of the article.
+- `ERRATA.md` : known errors of version 1.
+- `archive/version-1/` : version 1 as it was in July 2026, superseded. Manuscript, ancillary file, scripts with a run log, novelty review, drafts.
+- `AUTHORS.md`, `CITATION.cff`, `LICENSE.md`.
 
 ## License
 
-- `code/` : MIT License (see `code/LICENSE`).
-- Manuscript, ancillary and review texts: (c) 2026 N. Van Eeckhout, all rights reserved pending arXiv submission (arXiv grants of license will apply upon submission).
+- Code (`code/` and `archive/version-1/code/`): MIT License.
+- Texts (`paper/`, `ERRATA.md`, `archive/`): (c) 2026 N. Van Eeckhout, all rights reserved. See `LICENSE.md`.
