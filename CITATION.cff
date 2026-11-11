@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Preprint draft, not yet submitted to arXiv. Please contact the author before citing. Once submitted, cite the arXiv version."
+message: "Please cite the latest version of the Zenodo record, https://doi.org/10.5281/zenodo.24139477. Known errors of earlier versions are listed in ERRATA.md."
 title: "Mirror-Constrained Black Hole Thermodynamics: A Two-Horizon Companion"
 authors:
   - family-names: "Van Eeckhout"

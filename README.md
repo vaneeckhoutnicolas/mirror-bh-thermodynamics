@@ -1,10 +1,14 @@
 # Mirror-Constrained Black Hole Thermodynamics
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24139477.svg)](https://doi.org/10.5281/zenodo.24139477)
+
 Companion research to Ahn, Bae, Jang, Kwon, *A Constraint-Free Formulation of Black Hole Thermodynamics from the Field Equations*, arXiv:2605.08235.
 
 **Author:** N. Van Eeckhout, independent researcher, Brussels.
 
 **Status (2026-11-11):** the manuscript in `paper/` is version 1 (July 2026). It is superseded and kept for the record: a critical recomputation (carried out with an AI assistant, with new code) confirmed the computations it reran and found errors of statement and of attribution, listed in [ERRATA.md](ERRATA.md). A shorter revised article is in preparation. Not submitted. Please do not cite version 1.
+
+**Archive:** Zenodo, DOI [10.5281/zenodo.24139477](https://doi.org/10.5281/zenodo.24139477) (all versions; it always resolves to the latest one). The snapshot of 2026-11-11 is version `v0.3-errata`, DOI 10.5281/zenodo.24139478.
 
 ## Core results
 
