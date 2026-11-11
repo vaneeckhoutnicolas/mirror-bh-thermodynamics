@@ -1,5 +1,7 @@
 # Integration checklist for the master paper
 
+> **Record of July 2026, not a checklist for a new submission.** It lists what was to be integrated into version 1 of the manuscript. Version 1 is superseded (`../ERRATA.md`) and the revised article is prepared from a new plan. The items below are left as they were written. Note added on 2026-11-11.
+
 Maps every deliverable and attribution from the 2026-07-02 sessions into mirror-constrained-bh-thermodynamics.md. Work through in order; each item is independent.
 
 ## 1. Section replacements and additions

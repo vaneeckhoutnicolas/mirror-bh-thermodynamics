@@ -1,5 +1,7 @@
 # Computation scripts
 
+A run of all scripts from a clean clone, with durations and what each one prints, is recorded in `RUN-LOG-2026-11-11.md`.
+
 Dependencies: Python 3, sympy, mpmath. Convention throughout: Ruppeiner metric g = -Hess S, calibrated so the Kerr diagonal invariant equals -1 (kerr_calib.py).
 
 Core library:
@@ -18,7 +20,7 @@ Numerics and cross-validation:
 - kerr_calib.py, rn_flat.py : calibration and RN flatness.
 - rnads.py, asympt.py, kerr_ads.py, kn_ads.py, crosscheck.py : numerical discovery pipeline (branch tracking, Richardson extrapolation, deformation scan, predictive test).
 - kn_universal.py, kn_universal_num.py : nu-map universality tests.
-- mp5d_check.py : Myers-Perry 5D vs Bravetti-Nettel-Quevedo, 40 digits.
+- mp5d_check.py : Myers-Perry 5D vs Bravetti, Momeni, Myrzakulov and Altaibayeva (arXiv:1303.2077), 40 digits.
 - kerrsen_numap.py : Kerr-Sen sum reconfirmation and nu-map counterexample.
 - abp_check.py : both Kerr branches vs Aman-Bengtsson-Pidokrajt eq. (37).
 - monodromy.py : exponent closure and flat-limit -2 M omega split.

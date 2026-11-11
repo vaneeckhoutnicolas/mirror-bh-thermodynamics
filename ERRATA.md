@@ -40,4 +40,26 @@ The expressions "quantized curvature charges" and "rigidity hierarchy" claim mor
 
 The following elements of version 1 do not belong in a research article and are absent from the revision: the simulated panel of Section 11 and the note on method that announces it; the asides in plain language of Sections 9 and 10; the lists of novelty declared by the author (Sections 7.10 and 12); the framing as a companion to arXiv:2605.08235, on which the curvature results do not depend. Two drafting remnants are also removed: the first sentence of Section 5 and the closing note.
 
+## E6. Reference list: two wrong entries
+
+Added on 2026-11-11, after the release `v0.3-errata`. Found while the references of the revised article were checked one by one against their records.
+
+1. The paper cited for the five dimensional Myers Perry black hole with equal angular momenta, Adv. High Energy Phys. 2013, 549808 (arXiv:1303.2077, DOI 10.1155/2013/549808), is by A. Bravetti, D. Momeni, R. Myrzakulov and A. Altaibayeva. Version 1 attributes it to A. Bravetti, F. Nettel and H. Quevedo: in the reference list, in Sections 8, 10.6 and 12, in the closing note and in the ancillary file. The same wrong names stood in `README.md`, `AUTHORS.md` and `code/README.md`, which are corrected together with this item; they remain in the files of July under `review/` and `archive/`, which are kept as records. The formula taken from that paper is the right one: its Ruppeiner curvature for equal angular momenta, R = -S (S^2 + 12 J^2)/(S^4 - 16 J^4) in the normalization of that paper (its Section III.2), which `code/mp5d_check.py` uses in the equivalent form R S = -u^2 (u^2 + 12)/(u^4 - 16) with u = S/J. The cross validation at forty digits stands.
+
+2. The article of P. Pradhan cited for the Kerr Sen black hole (arXiv:1503.04514) is Eur. Phys. J. C 76 (2016) 131, not 31. An erratum to that article exists, Eur. Phys. J. C 81 (2021) 896.
+
+Ten entries of the reference list were rechecked that day, four against the record of arXiv, of the publisher or of INSPIRE and six against the reference lists of published papers. These two were wrong. The other entries have not been rechecked.
+
+## E7. Sections 7, 7.10, 10.6 and 12: what was already in the literature
+
+Added on 2026-11-11, with E6.
+
+1. For the Kerr black hole, Åman, Bengtsson and Pidokrajt (arXiv:1507.06097) write the entropy and the curvature scalar of the Ruppeiner metric in coordinates that cover the outer and the inner horizon (their equations 35 and 37). Equation (10.8) of version 1, R(+/-) S(+/-) = -1/2 +/- (nu/2 - 1/nu), is equivalent to these two equations; Section 10.6 mentions the agreement as a check of conventions. The closed form of each Kerr sheet, which Section 7.10 lists as new, is therefore a rewriting of a published result. The sum R+S+ + R-S- = -1 and the cross sum R+S- + R-S+ = 3 follow from the same two equations in one line. That paper does not combine the two horizons: for Kerr, the combination is what version 1 adds.
+
+2. The value R S = -1 on a single horizon was published in 2006 for the five dimensional Kerr black hole with one angular momentum (Åman and Pidokrajt, arXiv:hep-th/0510139, equation 51). Version 1 does not cite it next to its integer.
+
+The title of Section 7 ("An original result") and the statements of novelty of Sections 7.10 and 12 must be read with these two facts. The general theorem of Section 10.6, for an arbitrary function W, is not affected.
+
+## How version 1 was produced
+
 Version 1 was produced by the author working alone with an AI assistant (Claude, Anthropic). Every computed result comes with a script that replays it; the assistant also took part in the derivations, the literature search and the drafting. See `AUTHORS.md`.
