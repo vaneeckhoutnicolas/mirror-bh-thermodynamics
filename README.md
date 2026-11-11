@@ -6,7 +6,7 @@
 
 **Status (November 2026):** version 2 is a short article of eleven pages, in `paper/`. It is a preprint and has not been peer reviewed. One script, `code/replay_short_article.py`, replays every statement of the article. Version 1 (July 2026, *Mirror-Constrained Black Hole Thermodynamics*, 31 pages) is superseded: it is kept unchanged in `archive/version-1/`, and its known errors are listed in [ERRATA.md](ERRATA.md). Please do not cite version 1.
 
-**Archive:** Zenodo, DOI [10.5281/zenodo.24139477](https://doi.org/10.5281/zenodo.24139477). This identifier covers all versions and always resolves to the latest one.
+**Archive:** Zenodo, DOI [10.5281/zenodo.24139477](https://doi.org/10.5281/zenodo.24139477). This identifier covers all versions and always resolves to the latest one. Version 2 is release `v2.0-article`, DOI [10.5281/zenodo.24147106](https://doi.org/10.5281/zenodo.24147106). Version 1 is release `v0.3-errata`, DOI [10.5281/zenodo.24139478](https://doi.org/10.5281/zenodo.24139478); that snapshot holds items E1 to E5 of the errata, and the current [ERRATA.md](ERRATA.md) is the complete list.
 
 ## What the article shows
 
